@@ -27,27 +27,26 @@
 </head>
 
 <body>
-
-    <header id="header" class="header header-hide">
+<header id="header" class="header header-hide">
         <div class="container">
     
           <div id="logo" class="pull-left">
-            <h1><a href="indexx.html" class="scrollto"><span>B</span>amboozled</a></h1>
+            <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
           </div>
     
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <li class="menu-active"><a href="indexx.html">Home</a></li>
-              <li><a href="friends.html">My Friends</a></li>
-              <li><a href="comics.html">My List</a></li>
-              <li><a href="search.html">Search</a></li>
-              <li><a href="add.html">Add</a></li>
+              <li class="menu-active"><a href="/home">Home</a></li>
+              <li><a href="/friends">My Friends</a></li>
+              <li><a href="/comics">My List</a></li>
+              <li><a href="/search">Search</a></li>
+              <li><a href="/add">Add</a></li>
               <li class="menu-has-children"><a href="">Join</a>
                 <ul>
-                  <li><a href="login.html">Sign in</a></li>
-                  <li><a href="register.html">Sign up</a></li>
+                  <li><a href="/login">Sign in</a></li>
+                  <li><a href="/register">Sign up</a></li>
                 </ul>
               </li>
            
