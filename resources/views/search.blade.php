@@ -150,20 +150,24 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/modal-video/js/modal-video.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
+ <!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />-->
+ <script src="{{ URL::asset('js/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/move-top.js')}}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/easing.js')}}"></script>
+  <script src="{{ URL::asset('js/jquery-migrate.min.js')}}"></script>
+  <script src="{{ URL::asset('js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ URL::asset('js/hoverIntent.js')}}"></script>
+  <script src="{{ URL::asset('js/superfish.min.js')}}"></script>
+  <script src="{{ URL::asset('js/easing.min.js')}}"></script>
+  <script src="{{ URL::asset('js/owl.carousel.min.js')}}"></script>
+  <script src="{{ URL::asset('js/wow.min.js')}}"></script>
+  <script src="{{ URL::asset('js/modal-video.js')}}"></script>
+
+
   <!-- Contact Form JavaScript File -->
  
   <!-- Template Main Javascript File -->
-  <script src="js/main2.js"></script>
+  <script src="{{ URL::asset('js/main2.js')}}"></script>
 
 </body>
 </html>
