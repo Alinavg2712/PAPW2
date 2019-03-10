@@ -7,9 +7,7 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
@@ -25,6 +23,7 @@
   <link href="{{ URL::asset('css/owl.theme.default.min.css')}}"  rel="stylesheet">
   <link href="{{ URL::asset('css/font-awesome.min.css')}}"   rel="stylesheet">
   <link href="{{ URL::asset('css/animate.min.css')}}"  rel="stylesheet">
+  <link href="{{ URL::asset('css/modal-video.min.css')}}" rel="stylesheet">
 
 
   <!-- Main Stylesheet File -->
@@ -362,7 +361,7 @@
   <script src="{{ URL::asset('js/easing.min.js')}}"></script>
   <script src="{{ URL::asset('js/owl.carousel.min.js')}}"></script>
   <script src="{{ URL::asset('js/wow.min.js')}}"></script>
- 
+  <script src="{{ URL::asset('js/modal-video.js')}}"></script>
 
   <!-- Template Main Javascript File -->
   <script src="{{ URL::asset('js/main2.js')}}"></script>
