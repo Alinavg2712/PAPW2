@@ -51,7 +51,7 @@
             <ul class="nav-menu">
               <li class="menu-active"><a href="/home">Home</a></li>
               <li><a href="/friends">My Friends</a></li>
-              <li><a href="comics.html">My List</a></li>
+              <li><a href="/comics">My List</a></li>
               <li><a href="search.html">Search</a></li>
               <li><a href="add.html">Add</a></li>
               <li class="menu-has-children"><a href="">Join</a>

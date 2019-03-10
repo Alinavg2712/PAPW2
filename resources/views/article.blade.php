@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-group">
                            <!--> <input type="submit" value="Add" class="btn float-right login_btn">-->
-                           <a href="comics.html">Add</a>
+                           <a href="/comics">Add</a>
                         </div>
                 </div>
     

@@ -23,6 +23,9 @@ Route::get('/article', function () {
 Route::get('/friends', function () {
     return view('friends');
 });
+Route::get('/comics', function () {
+    return view('comics');
+});
 /*
 Route::get('/landing',function()
 {
