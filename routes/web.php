@@ -32,6 +32,12 @@ Route::get('/search', function () {
 Route::get('/add', function () {
     return view('add');
 });
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/register', function () {
+    return view('register');
+});
 /*
 Route::get('/landing',function()
 {

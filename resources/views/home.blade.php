@@ -56,8 +56,8 @@
               <li><a href="/add">Add</a></li>
               <li class="menu-has-children"><a href="">Join</a>
                 <ul>
-                  <li><a href="login.html">Sign in</a></li>
-                  <li><a href="register.html">Sign up</a></li>
+                  <li><a href="/login">Sign in</a></li>
+                  <li><a href="/register">Sign up</a></li>
                 </ul>
               </li>
            

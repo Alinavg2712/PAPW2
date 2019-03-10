@@ -60,8 +60,8 @@
                   <button type="button" class="overlay-close">Close</button>
                   <nav>
                      <ul>
-                        <li><a href="/home" >Sign in</a></li>
-                        <li><a href="/home" >Sign up</a></li>
+                        <li><a href="/login" >Sign in</a></li>
+                        <li><a href="/register" >Sign up</a></li>
                       
                        
                      </ul>
