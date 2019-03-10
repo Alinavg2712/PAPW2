@@ -103,7 +103,7 @@
 
             <img src="images/14.jpg" alt="img" class="img-fluid" >
             <h4>Title</h4>
-            <a href="vacio.html">read more</a>
+            <a href="/article">read more</a>
 
           </div>
         </div>
@@ -113,7 +113,7 @@
 
             <img src="images/27.jpg" alt="img" class="img-fluid">
             <h4>Title</h4>
-            <a href="vacio.html">read more</a>
+            <a href="/article">read more</a>
 
           </div>
         </div>
@@ -123,7 +123,7 @@
 
             <img src="images/4.jpg" alt="img" class="img-fluid">
             <h4>Title</h4>
-            <a href="vacio.html">read more</a>
+            <a href="/article">read more</a>
 
           </div>
         </div>
@@ -351,7 +351,6 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
- <script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
   <!-- JavaScript Libraries -->
   <script src="{{ URL::asset('js/jquery.min.js')}}"></script>
   <script src="{{ URL::asset('js/jquery-migrate.min.js')}}"></script>
