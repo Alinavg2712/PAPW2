@@ -20,6 +20,9 @@ Route::get('/home', function () {
 Route::get('/article', function () {
     return view('article');
 });
+Route::get('/friends', function () {
+    return view('friends');
+});
 /*
 Route::get('/landing',function()
 {
