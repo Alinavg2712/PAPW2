@@ -26,6 +26,9 @@ Route::get('/friends', function () {
 Route::get('/comics', function () {
     return view('comics');
 });
+Route::get('/search', function () {
+    return view('search');
+});
 /*
 Route::get('/landing',function()
 {
