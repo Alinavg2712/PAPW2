@@ -29,6 +29,9 @@ Route::get('/comics', function () {
 Route::get('/search', function () {
     return view('search');
 });
+Route::get('/add', function () {
+    return view('add');
+});
 /*
 Route::get('/landing',function()
 {

@@ -53,7 +53,7 @@
               <li><a href="/friends">My Friends</a></li>
               <li><a href="/comics">My List</a></li>
               <li><a href="/search">Search</a></li>
-              <li><a href="add.html">Add</a></li>
+              <li><a href="/add">Add</a></li>
               <li class="menu-has-children"><a href="">Join</a>
                 <ul>
                   <li><a href="login.html">Sign in</a></li>
