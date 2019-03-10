@@ -147,7 +147,8 @@
                                      
                                     </form>
                         
-                                    <div class="contact100-more flex-col-c-m" style="background-image: url('images/54.jpg');">
+                                    <div class="contact100-more flex-col-c-m" >
+                                    <img src="images/54.jpg" alt="img" >
                                     </div>
                                 </div>
                             </div>
