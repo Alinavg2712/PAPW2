@@ -60,9 +60,9 @@
                   <button type="button" class="overlay-close">Close</button>
                   <nav>
                      <ul>
-                        <li><a href="index.html" >Home</a></li>
-                        <li><a href="about.html" >About</a></li>
-                        <li><a href="history.html" >History</a></li>
+                        <li><a href="index.html" >Sign in</a></li>
+                        <li><a href="about.html" >Sign up</a></li>
+                      
                        
                      </ul>
                   </nav>
