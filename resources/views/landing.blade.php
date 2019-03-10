@@ -7,7 +7,7 @@
    <!DOCTYPE html>
 <html lang="zxx">
    <head>
-      <title>Dragon Hunt a Games Category Bootstrap responsive Website Template | Home :: w3layouts</title>
+      <title>BMBZLD</title>
       <!--meta tags -->
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
       <script src="{{ URL::asset('js/modernizr.custom.js')}}"></script>
       <!-- //Nav-CSS -->	
       <!-- banner -->	
-      <link rel="stylesheet" type="text/css"  href="{{ URL::asset('css/uncover.css')}}" />
+      <link rel="stylesheet" type="text/css"  href="{{ URL::secure_asset('css/uncover.css')}}" />
       <!--//banner -->	
       <!--stylesheets-->
       <link  href="{{ URL::asset('css/style.css')}}" rel='stylesheet' type='text/css' media="all">
