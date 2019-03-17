@@ -35,9 +35,8 @@ Route::get('/add', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register',  'UserController@create');
+Route::post('/register',  'UserController@store');
 /*
 Route::get('/landing',function()
 {

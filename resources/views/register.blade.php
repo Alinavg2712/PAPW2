@@ -23,15 +23,11 @@
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+			
 			</div>
 			<div class="card-body">
-                <form class="" method="post" action="#">
-						
+                <form class="" method="post" action="/register" enctype="multipart/form-data">
+						@csrf
                         <div class="input-group form-group">
                         <label for="name" class="cols-sm-2 control-label">Your Name</label>
                         <div class="cols-sm-10">
@@ -62,6 +58,47 @@
                         </div>
                     </div>
 
+                        <label for="phone" class="cols-sm-2 control-label">Phone</label>
+                      <div class="input-group form-group">
+                        <div class="cols-sm-10">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-users fa" ></i></span>
+                                <input type="text" class="form-control" name="phone" id="phone"  placeholder="Enter your phone"/>
+                            </div>
+                        </div>
+                    </div>
+
+                        <label for="address" class="cols-sm-2 control-label">Address</label>
+                      <div class="input-group form-group">
+                        <div class="cols-sm-10">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-users fa" ></i></span>
+                                <input type="text" class="form-control" name="address" id="address"  placeholder="Enter your Address"/>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="cols-sm-2 control-label" >Profile Picture </label>
+                    <div class="input-group form-group" data-validate="Name is required">
+                    <div class="cols-sm-10">    
+                    <div class="input-group-prepend">           
+                          <input type="file" class="form-control" name="profile" id="profile" required>
+                         <label class="custom-file-label" for="profile">Choose file...</label>
+                         </div>
+                    </div>
+                     </div>
+
+                   
+                     <label class="cols-sm-2 control-label">Picture </label>
+                     <div class="input-group form-group" data-validate="Name is required">
+                     <div class="cols-sm-10">   
+                     <div class="input-group-prepend">        
+                          <input type="file" class="form-control" name="picture" id="picture" required>
+                           <label class="custom-file-label" for="picture">Choose file...</label>
+                    </div>
+                    </div>
+                      </div>
+
+
                     <div class="input-group form-group">
                         <label for="password" class="cols-sm-2 control-label">Password</label>
                         <div class="cols-sm-10">
@@ -82,21 +119,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                           <!-- <input type="submit" value="Register" class="btn float-right login_btn">-->
-                           <a href="/home">Register</a>
+                        <input type="submit" value="Register" class="btn float-right login_btn">
+                        <!--   <a href="/home">Register</a>-->
                         </div>
                  
                     
                 </form>
 			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </div>
