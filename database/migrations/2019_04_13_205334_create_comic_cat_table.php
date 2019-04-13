@@ -16,7 +16,8 @@ class CreateComicCatTable extends Migration
         Schema::create('comic_cat', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-          
+            $table->integer('comic_id')->unsigned();
+            $table->integer('cat_id')->unsigned();
            
         });
     }

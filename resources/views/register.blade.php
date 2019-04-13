@@ -81,8 +81,9 @@
                     <div class="input-group form-group" data-validate="Name is required">
                     <div class="cols-sm-10">    
                     <div class="input-group-prepend">           
-                          <input type="file" class="form-control" name="profile" id="profile" required>
-                         <label class="custom-file-label" for="profile">Choose file...</label>
+
+                         <input type="file"  name="profile" id="img" required style="display:none;"/>
+                        <label class="cols-sm-2 control-label" for="img">Click me to upload image</label>
                          </div>
                     </div>
                      </div>
@@ -92,8 +93,8 @@
                      <div class="input-group form-group" data-validate="Name is required">
                      <div class="cols-sm-10">   
                      <div class="input-group-prepend">        
-                          <input type="file" class="form-control" name="picture" id="picture" required>
-                           <label class="custom-file-label" for="picture">Choose file...</label>
+                          <input type="file"  name="picture" id="picture" required style="display:none;" />
+                           <label class="cols-sm-2 control-label" for="picture">Click me to upload image</label>
                     </div>
                     </div>
                       </div>
