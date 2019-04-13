@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
+use App\amigo;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -31,5 +32,9 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+    public function amigos()
+    {
+        return $this->belongsToMany(Amigo::class);
     }
 }

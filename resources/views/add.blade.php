@@ -84,13 +84,13 @@
                                         </div> 
                                         <div class="wrap-input100 validate-input" data-validate = "Message is required">
                                                 <label class="label-input100" for="message">Description</label>
-                                                <textarea id="message" class="input100" name="message" placeholder="Type your message here..."></textarea>
+                                                <textarea id="message" class="input100" name="description" placeholder="Type your message here..."></textarea>
                                                 <span class="focus-input100"></span>
                                             </div>
                                             <div class="wrap-input100">
                                                     <div class="label-input100">Category</div>
                                                     <div>
-                                                        <select class="js-select2" name="service">
+                                                        <select class="js-select2" name="category">
                                                             <option>Action</option>
                                                             <option>Fantasy</option>
                                                             
@@ -103,28 +103,28 @@
                                               
                                                 <label class="label-input100" for="email">Video</label>
                                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                                <input type="file" class="input100" id="validatedCustomFile" required>
+                                                <input type="file" class="input100" name="vid" id="vid" required>
                                                 <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                             <span class="focus-input100"></span>
                                         </div>
                                         <label class="label-input100" for="email">Picture 1</label>
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                                             
-                                                <input type="file" class="input100" id="validatedCustomFile" required>
+                                                <input type="file" class="input100"  name="img1" id="img1"  required>
                                                     <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                                 <span class="focus-input100"></span>
                                             </div>
                                             <label class="label-input100" for="email">Picture 2</label>
                                             <div class="wrap-input100 validate-input" data-validate="Name is required">
                                                 
-                                                    <input type="file" class="input100" id="validatedCustomFile" required>
+                                                    <input type="file" class="input100"  name="img2" id="img2"  required>
                                                         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                                     <span class="focus-input100"></span>
                                                 </div>
                                                 <label class="label-input100" for="email">Picture 3</label>
                                                 <div class="wrap-input100 validate-input" data-validate="Name is required">
                                                     
-                                                        <input type="file" class="input100" id="validatedCustomFile" required>
+                                                        <input type="file" class="input100"  name="img3" id="img3"  required>
                                                             <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                                         <span class="focus-input100"></span>
                                                     </div>

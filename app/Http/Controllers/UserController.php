@@ -76,7 +76,7 @@ class UserController extends Controller
         $nuser->save();
         $nuser->roles()->attach(Role::where('name','user')->first());
       
-        return view('home');
+        return redirect('/login');
 
 
     }
@@ -90,6 +90,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $usuario=User::where('id',$id)->firstOrFail();
+        return view('profile',['th'=>$usuario]);
     }
 
     /**

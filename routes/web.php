@@ -20,21 +20,26 @@ Route::get('/home', function () {
 Route::get('/article', function () {
     return view('article');
 });
-Route::get('/friends', function () {
-    return view('friends');
-});
+
 Route::get('/comics', function () {
     return view('comics');
 });
 Route::get('/search', function () {
     return view('search');
 });
-Route::get('/add', function () {
-    return view('add');
-});
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/friends/{id}','Friend@showU');
+
+Route::get('/profile/{id}', 'UserController@show');
+Route::post('/addfriend', 'Friend@eSolicitud');
+
+Route::post('/login','loginController@check');
+Route::get('/add',  'ComicController@create');
+
+Route::post('/add',  'ComicController@store');
 Route::get('/register',  'UserController@create');
 Route::post('/register',  'UserController@store');
 /*

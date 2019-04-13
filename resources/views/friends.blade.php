@@ -68,23 +68,19 @@
       
                     <div id="catlist">
                             <h1 class="text-center">Pending</h1>
-                           
+                        <!--   
                         <dl>
                             <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Michael</a></dt>   
                             <dd></dd>
                             <button id="stuff_edit" type="submit" class="btn btn-info">Add</button>
                             <button id="stuff_sell" type="submit" class="btn btn-info">Dismiss</button>
-                        </dl>
+                        </dl>-->
                         <dl>
-                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Kate</a></dt>
-                            <button id="stuff_edit" type="submit" class="btn btn-info">Add</button>
-                            <button id="stuff_sell" type="submit" class="btn btn-info">Dismiss</button>
-                        </dl>
+                        @foreach($th as $usuario)
+                        <dt> <p> {{$usuario->frienduser_id}} </p></dt> 
+                        @endforeach  
                         <dl>
-                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Mikolai</a></dt>
-                            <button id="stuff_edit" type="submit" class="btn btn-info">Add</button>
-                            <button id="stuff_sell" type="submit" class="btn btn-info">Dismiss</button>
-                        </dl>
+                      
                       
                     </div>    
                
@@ -92,14 +88,18 @@
                
                     <div id="catlist">
                             <h1 class="text-center">My friends</h1>
-                  
+                         <dl>
+                        @foreach($rh as $usuario)
+                        <dt> <p> {{$usuario->frienduser_id}} </p></dt> 
+                        @endforeach  
                         <dl>
-                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Frederik</a></dt>   
+                      <!--  <dl>
+                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Frederik</a></dt>  
                         </dl>
                         <dl>
                             <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Marcin</a></dt>
                         </dl>
-                       
+                       -->
                     </div>    
                
           </div>
