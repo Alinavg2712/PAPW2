@@ -10,10 +10,10 @@ class amigo extends Model
     //
     public function users()
     {
-        return $this->belongsToMany(User::class,'amigos','mainuser_id');
+        return $this->belongsTo(User::class,'mainuser_id');
     }
     public function friends()
     {
-        return $this->belongsToMany(User::class,'amigos','frienduser_id');
+        return $this->belongsTo(User::class,'frienduser_id');
     }
 }

@@ -103,44 +103,46 @@
           <div class="row justify-content-center">
                 <div class="col-md-7 col-lg-5">
           
-              <img src="images/3.jpg" alt="About">
+              <img src="../img/{{$th->pic1}}" alt="About">
             </div>
-    
-            <div class="col-md-5 col-lg-3">
-              <div class="about-content">
-    
-                <h1><span>Title book</span> </h1>
-                <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-    
-              </div>
-           
-         
-                    <div class="rating-block">
-                        <h4>Average user rating</h4>
-                        <h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-                        <button type="button" class="star" aria-label="Left Align">
-                          <span class="fa fa-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="star" aria-label="Left Align">
-                          <span class="fa fa-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="star" aria-label="Left Align">
-                          <span class="fa fa-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="star" aria-label="Left Align">
-                          <span class="fa fa-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="star" aria-label="Left Align">
-                          <span class="fa fa-star" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="form-group">
-                           <!--> <input type="submit" value="Add" class="btn float-right login_btn">-->
-                           <a href="/comics">Add</a>
+            <form class="" method="post" action="/articleA" >
+			 	@csrf
+                        <div class="col-md-5 col-lg-3">
+                        <div class="about-content">
+                
+                            <h1><span>{{$th->nombre}}</span> </h1>
+                            <p>{{$th->description}}
+                            </p>
+                            <input type="hidden" id="Idf" name="Idf" value="{{$th->id}}">
+                            <input type="hidden" id="Idu" name="Idu" value="{{Auth::user()->id}}">
                         </div>
-                </div>
-    
+                    
+                    
+                                            <div class="rating-block">
+                                                <h4>Average user rating</h4>
+                                                <h2 class="bold padding-bottom-7">{{$th->likes}} <small>/ 5</small></h2>
+                                                <button type="button" class="star" aria-label="Left Align">
+                                                <span class="fa fa-star" aria-hidden="true"></span>
+                                                </button>
+                                                <button type="button" class="star" aria-label="Left Align">
+                                                <span class="fa fa-star" aria-hidden="true"></span>
+                                                </button>
+                                                <button type="button" class="star" aria-label="Left Align">
+                                                <span class="fa fa-star" aria-hidden="true"></span>
+                                                </button>
+                                                <button type="button" class="star" aria-label="Left Align">
+                                                <span class="fa fa-star" aria-hidden="true"></span>
+                                                </button>
+                                                <button type="button" class="star" aria-label="Left Align">
+                                                <span class="fa fa-star" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div class="form-group">
+                                                    <input type="submit" name="Add" value="Add" class="btn float-right login_btn">
+                                                
+                                                </div>
+                            </div>
+                </form>
           </div>
         </div>
       </section>
@@ -161,83 +163,33 @@
    
                     <div class="response">
                 <h4>Responses</h4>
+                @foreach($ch as $comm)
                 <div class="media response-info">
                     <div class="media-left response-text-left">
                         <a href="#">
-                            <img class="media-object" src="images/vector.png" alt=""/>
+                            <img class="media-object" src="{{$comm->users->pic1}}" alt=""/>
                         </a>
-                        <h5><a href="#">Username</a></h5>
+                        <h5><p >{{$comm->users->name}}</p></h5>
                     </div>
                     <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>Sep 21, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                        <div class="media response-info">
-                            <div class="media-left response-text-left">
-                                <a href="#">
-                                    <img class="media-object" src="images/36.jpg" alt=""/>
-                                </a>
-                                <h5><a href="#">Username</a></h5>
-                            </div>
-                            <div class="media-body response-text-right">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <ul>
-                                    <li>July 17, 2015</li>
-                                    <li><a href="single.html">Reply</a></li>
-                                </ul>		
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
+                        <p>{{$comm->description}}</p>
+                        
+                     
+                          
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="images/36.jpg" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>Mar 28, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                        <div class="media response-info">
-                            <div class="media-left response-text-left">
-                                <a href="#">
-                                    <img class="media-object" src="images/vector.png" alt=""/>
-                                </a>
-                                <h5><a href="#">Username</a></h5>
-                            </div>
-                            <div class="media-body response-text-right">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <ul>
-                                    <li>Feb 19, 2015</li>
-                                    <li><a href="single.html">Reply</a></li>
-                                </ul>		
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
+                @endforeach  
+              
             </div>	
             <div class="coment-form">
                 <h4>Leave your comment</h4>
-                <form>
-                    <input type="text" value="Name " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                    <input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email (will not be published)*';}" required="">
-                    <input type="text" value="Website" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Website';}" required="">
-                    <textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Comment...';}" required="">Your Comment...</textarea>
-                    <input type="submit" value="Submit Comment" >
+                <form class="" method="post" action="/commentA">
+                @csrf
+                <input type="hidden" id="Idcomic" name="Idcomic" value="{{$th->id}}">
+                <input type="hidden" id="Idus" name="Idus" value="{{Auth::user()->id}}">
+                    <textarea name="comm" required="">Your Comment...</textarea>
+                    <input type="submit" name="Sub" value="Submit Comment" >
                 </form>
     
 

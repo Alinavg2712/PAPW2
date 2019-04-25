@@ -64,56 +64,30 @@
         
             <div class="container">
                 <div class="row justify-content-center">
-                    
+                @foreach($th as $list)
+              <!--  <form class="" method="post" action="/friendA" >
+					              	@csrf-->
                     <div class="media">
                                                     
-                                    <img class="d-flex align-self-start" src="images/7.jpg" alt="Generic placeholder image" width="68" height="93" >
+                                    <img class="d-flex align-self-start" src="../img/{{$list->comics->pic1}}" alt="Generic placeholder image" width="68" height="93" >
                                     <div class="media-body pl-3">
                                         <div class="stats">
                                            
                                         </div>
-                                        <div class="address"><h2>Spider Gwen #17</h2> </div>
+                                        <div class="address"><h2>{{$list->comics->nombre}}</h2> </div>
                                         <div class="price">Status</div>     
-                                        <div class="price">Calificacion</div>  
+                                        <div class="price">{{$list->comics->publicado}}</div>     
+                                        <div class="price">Likes:</div>  
+                                        <div class="price">{{$list->comics->likes}}</div>  
+                                        <input type="hidden" id="Idf" name="Idf" value="{{$list->comics->id}}">
                                           <div class="btn-group">
                                            
                                               <button  id="inner"type="reset" class="btn icon-btn btn-primary">Remove</button>
                                               </div>
                                   </div>
                                  </div> 
-                                 <div class="media">
-                                                    
-                                        <img class="d-flex align-self-start" src="images/30.jpg" alt="Generic placeholder image" width="68" height="93" >
-                                        <div class="media-body pl-3">
-                                            <div class="stats">
-                                               
-                                            </div>
-                                            <div class="address"><h2>The Mighty Thor #11</h2> </div>
-                                            <div class="price">Status</div>     
-                                            <div class="price">Calificacion</div>    
-                                              <div class="btn-group">
-                                            
-                                                  <button  id="inner"type="reset" class="btn icon-btn btn-primary">Remove</button>
-                                                  </div>
-                                      </div>
-                                     </div> 
-                                     <div class="media">
-                                                    
-                                            <img class="d-flex align-self-start" src="images/53.jpg" alt="Generic placeholder image" width="68" height="93" >
-                                            <div class="media-body pl-3">
-                                                <div class="stats">
-                                                   
-                                                </div>
-                                                <div class="address"><h2>Hawkeye #6</h2> </div>
-                                                <div class="price">Status</div>     
-                                                <div class="price">Calificacion</div>    
-                                                  <div class="btn-group">
-                                                      
-                                                      <button  id="inner"type="reset" class="btn icon-btn btn-primary">Remove</button>
-                                                      </div>
-                                          </div>
-                                         </div> 
-               
+              <!--    </form>-->
+                    @endforeach  
           </div>
         </div>
         </div>

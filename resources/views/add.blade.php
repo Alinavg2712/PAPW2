@@ -45,12 +45,34 @@
               <li><a href="/search">Search</a></li>
               <li><a href="/add">Add</a></li>
               <li class="menu-has-children"><a href="">Join</a>
-                <ul>
-                  <li><a href="/login">Sign in</a></li>
-                  <li><a href="/register">Sign up</a></li>
-                </ul>
-              </li>
-           
+                        <ul>
+                          <li><a href="/login">Sign in</a></li>
+                          <li><a href="/register">Sign up</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image" >
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                    <a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </li>
+                  
             </ul>
           </nav><!-- #nav-menu-container -->
         </div>
@@ -71,12 +93,16 @@
                        
                         <div class="container-contact100">
                                 <div class="wrap-contact100">
-                                    <form class="contact100-form validate-form">
+                                <form class="" method="post" action="/addC" enctype="multipart/form-data">
+                                @csrf
                                         <span class="contact100-form-title">
                                            Add new Comic
                                         </span>
                         
-                        
+                                      
+                
+                                        <input type="text" id="mainId" name="mainId" value="{{Auth::user()->id}}">
+                                      
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                                             <label class="label-input100" for="name">Title</label>
                                             <input id="name" class="input100" type="text" name="name" placeholder="Enter title...">
@@ -91,8 +117,8 @@
                                                     <div class="label-input100">Category</div>
                                                     <div>
                                                         <select class="js-select2" name="category">
-                                                            <option>Action</option>
-                                                            <option>Fantasy</option>
+                                                            <option value="1">Action</option>
+                                                            <option value="2">Fantasy</option>
                                                             
                                                         </select>
                                                         <div class="dropDownSelect2"></div>
@@ -100,40 +126,41 @@
                                                     <span class="focus-input100"></span>
                                                 </div>
                                                 
-                                              
+                                           
+                                          
+   
+                 
                                                 <label class="label-input100" for="email">Video</label>
-                                              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                                <input type="file" class="input100" name="vid" id="vid" required>
-                                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                                            <span class="focus-input100"></span>
+                                              <div class="input-group form-group" data-validate="Name is required">
+                                                <input type="file"  name="vid" id="vid" required  />
+                                              
                                         </div>
                                         <label class="label-input100" for="email">Picture 1</label>
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                                             
-                                                <input type="file" class="input100"  name="img1" id="img1"  required>
-                                                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                <input type="file"   name="img1" id="img1"  required />
+                                                 
                                                 <span class="focus-input100"></span>
                                             </div>
                                             <label class="label-input100" for="email">Picture 2</label>
                                             <div class="wrap-input100 validate-input" data-validate="Name is required">
                                                 
-                                                    <input type="file" class="input100"  name="img2" id="img2"  required>
-                                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                    <input type="file"   name="img2" id="img2"  required />
+                                                    
                                                     <span class="focus-input100"></span>
                                                 </div>
                                                 <label class="label-input100" for="email">Picture 3</label>
                                                 <div class="wrap-input100 validate-input" data-validate="Name is required">
                                                     
-                                                        <input type="file" class="input100"  name="img3" id="img3"  required>
-                                                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                        <input type="file"   name="img3" id="img3"  required />
+                                                         
                                                         <span class="focus-input100"></span>
                                                     </div>
                                                     <label class="label-input100" for="email">Picture 4</label>
                                                     <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                                        
-                                                            <input type="file" class="input100" id="validatedCustomFile" required>
-                                                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                                                            <span class="focus-input100"></span>
+                                                    
+                                                            <input type="file"name="img4" id="img4"  required />
+                                                                    <span class="focus-input100"></span>
                                                         </div>
                                       
                         

@@ -75,11 +75,20 @@
                             <button id="stuff_edit" type="submit" class="btn btn-info">Add</button>
                             <button id="stuff_sell" type="submit" class="btn btn-info">Dismiss</button>
                         </dl>-->
-                        <dl>
                         @foreach($th as $usuario)
-                        <dt> <p> {{$usuario->frienduser_id}} </p></dt> 
-                        @endforeach  
                         <dl>
+                     
+                        <form class="" method="post" action="/friendA" >
+					              	@csrf
+                        <input type="hidden" id="Idf" name="Idf" value="{{$usuario->id}}">
+                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/> <p> {{$usuario->users->name}} </p></dt> 
+                        <dd></dd>
+                             <input type="submit" id="stuff_edit"  class="btn btn-info" name="Add" value="Add">
+                             <input type="submit" id="stuff_sell"  class="btn btn-info" name="Dismiss" value="Dismiss">
+                          
+                        </form>
+                        <dl>
+                        @endforeach  
                       
                       
                     </div>    
@@ -88,11 +97,11 @@
                
                     <div id="catlist">
                             <h1 class="text-center">My friends</h1>
-                         <dl>
                         @foreach($rh as $usuario)
-                        <dt> <p> {{$usuario->frienduser_id}} </p></dt> 
-                        @endforeach  
+                         <dl>
+                        <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->friends->name}} </p></dt> 
                         <dl>
+                        @endforeach  
                       <!--  <dl>
                             <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Frederik</a></dt>  
                         </dl>

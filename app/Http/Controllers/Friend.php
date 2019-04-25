@@ -26,7 +26,7 @@ class Friend extends Controller
     
      public function showU($id){
   
-            $solicitudes=amigo::where('mainuser_id',$id)
+            $solicitudes=amigo::where('frienduser_id',$id)
                             ->where('accept','=',0)
                             ->get();
           
@@ -42,7 +42,30 @@ class Friend extends Controller
             return view('friends',['th'=>$solicitudes],['rh'=>$amigos]);
             
      }
-  
+     public function friendA(Request $request){
+       if(Auth::check())
+       {
+            if(isset($request->Add))
+            {
+                $friend=amigo::find($request->Idf);  
+                $friend->accept=1;
+                $friend->save();
+                return redirect('/friends/'.$friend->mainuser_id);
+            }
+            if(isset($request->Dismiss))
+            {
+                $friend=amigo::find($request->Idf);  
+                $friend->accept=0;
+                $friend->delete();
+                return redirect('/friends/'.$friend->mainuser_id);
+              
+            }       
+        }
+        else{
+        return redirect('/login');
+        }
+        
+        }
  
      /*
      public function showF($id){

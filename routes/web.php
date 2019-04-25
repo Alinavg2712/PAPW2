@@ -17,13 +17,13 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/article', function () {
-    return view('article');
-});
+Route::get('/comics/{id}','ComicController@showCom');
 
-Route::get('/comics', function () {
-    return view('comics');
-});
+Route::get('/article/{id}', 'ComicController@showArt');
+Route::post('/articleA','ComicController@comicAdd');
+
+Route::post('/commentA','ComController@store');
+
 Route::get('/search', function () {
     return view('search');
 });
@@ -32,18 +32,20 @@ Route::get('/login', function () {
 });
 
 Route::get('/friends/{id}','Friend@showU');
+Route::post('/friendA','Friend@friendA');
 
 Route::get('/profile/{id}', 'UserController@show');
 Route::post('/addfriend', 'Friend@eSolicitud');
 
 Route::post('/login','loginController@check');
-Route::get('/add',  'ComicController@create');
 
-Route::post('/add',  'ComicController@store');
+Route::get('/add',  'ComicController@create');
+Route::post('/addC',  'ComicController@store');
+
 Route::get('/register',  'UserController@create');
 Route::post('/register',  'UserController@store');
 /*
 Route::get('/landing',function()
-{
+{   zfhtqeu1xculgtjn
     return view('landing');
 });*/

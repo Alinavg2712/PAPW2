@@ -18,13 +18,15 @@ class CreateComicsTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('description');
-            $table->integer('like');
+            $table->integer('likes')->unsigned();
             $table->boolean('publicado');
             $table->string('pic1');
             $table->string('pic2');
+            $table->string('pic3');
+            $table->string('pic4');
             $table->string('video');
-            $table->string('user_id');
-            
+            $table->integer('user_id')->unsigned();
+            $table->integer('cat_id')->unsigned();
 
         });
     }
