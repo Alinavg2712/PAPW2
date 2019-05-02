@@ -18,6 +18,7 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::get('/comics/{id}','ComicController@showCom');
+Route::post('/ComicD','ComicController@ComicD');
 
 Route::get('/article/{id}', 'ComicController@showArt');
 Route::post('/articleA','ComicController@comicAdd');
@@ -27,9 +28,7 @@ Route::post('/commentA','ComController@store');
 Route::get('/search', function () {
     return view('search');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', 'loginController@cook');
 
 Route::get('/friends/{id}','Friend@showU');
 Route::post('/friendA','Friend@friendA');

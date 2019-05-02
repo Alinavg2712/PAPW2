@@ -173,6 +173,8 @@
                     </div>
                     <div class="media-body response-text-right">
                         <p>{{$comm->description}}</p>
+                        <p>{{$comm->created_at}}</p>
+                      
                         
                      
                           

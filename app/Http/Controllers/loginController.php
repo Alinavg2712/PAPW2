@@ -17,8 +17,22 @@ class loginController extends Controller
      
       // Auth::attempt($credenciales);
        //zfhtqeu1xculgtjn
-       if(Auth::attempt($credenciales))
-       return redirect('/home');
+       if(isset($request->checky))
+       {
+           if(Auth::attempt($credenciales))
+           return redirect('/home')->cookie('nombre', $request->usuario, 10080);
+       }
+       else{
+            if(Auth::attempt($credenciales))
+            return redirect('/home');
+       }
      
     }
+   
+    public function cook(Request $request){
+        
+            $cookies = $request->cookie('nombre');
+            return view('login',['nombre'=>$cookies]);
+       
+     }
 }

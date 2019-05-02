@@ -142,6 +142,24 @@ class ComicController extends Controller
          return redirect('/login');
          }
          }
+         public function ComicD(Request $request){
+            if(Auth::check())
+                {
+                        
+                        if(isset($request->Dismiss))
+                        {
+                            $cmc=Comic::find($request->Idf);  
+                            $cmc->delete();
+                            $cmclist=ComicList::find($request->Idf);  
+                            $cmclist->delete();
+                            return redirect('/comics/'.Auth::user()->id);
+                        
+                        }       
+                }
+                        else{
+                        return redirect('/login');
+                        }
+             }
     /**
      * Show the form for editing the specified resource.
      *

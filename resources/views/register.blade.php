@@ -26,7 +26,7 @@
 			
 			</div>
 			<div class="card-body">
-                <form class="" method="post" action="/register" enctype="multipart/form-data">
+                <form  id="formreg" method="post" action="/register" enctype="multipart/form-data">
 						@csrf
                         <div class="input-group form-group">
                         <label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -53,7 +53,7 @@
                         <div class="cols-sm-10">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-users fa" ></i></span>
-                                <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                                <input type="text" class="form-control" name="username"  id="user"  placeholder="Enter your Username"/>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         <div class="cols-sm-10">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-lock fa-lg" ></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                                <input type="password" class="form-control" name="confirm" id="confirm"   placeholder="Confirm your Password"/>
                             </div>
                         </div>
                     </div>
@@ -133,5 +133,51 @@
 </div>
 <script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
   <script src="{{ URL::asset('js/jquery-2.2.3.min.js')}}"></script>
+  <script>
+            $( document ).ready(function()
+                        {  
+                             $("#formreg").submit(function(evt)
+                            {   var as;
+                                var es;
+                            var e= $("#user").val();    
+                            if( e.length >=6)
+                            {        as= true;     }
+                            else{
+                                console.log();
+                                $("#user").css("background-color","red");
+                            as= false;      
+                            }
+                             var i= $("#password").val();
+                                var mayusc=false;
+                                var numero=false;
+                                var minusc=false;
+                                var tamaño=false;
+                                if (i.length >= 8){
+                                    for (index = 0; index < i.length; index++) {
+                                        if(i.charAt(index).toUpperCase()  == i.charAt(index)  && isNaN(i.charAt(index)))
+                                        {     mayusc=true;     }
+                                    if (i.charAt(index).toLowerCase()  == i.charAt(index)  && isNaN(i.charAt(index)))
+                                    {    minusc=true;  }
+                                    if(isNaN(i.charAt(index)) == false)
+                                    {     numero=true;  }
+                                    }
+                                    tamaño = true; 
+                                }
+                                if(mayusc == true && minusc == true && numero == true && tamaño == true){   es= true;  }
+                                else{  console.log();
+                                    $("#password").css("background-color","red");
+                                    es= false;
+                                }
+                                if(as==true && es==true)
+                                {                                }
+                                else{  evt.preventDefault();  
+                                console.log();
+                                    $("#password").css("background-color","red");
+                                    $("#user").css("background-color","red");
+                                 }
+                          });
+                        });  
+                        </script>
+       
 </body>
 </html>

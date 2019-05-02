@@ -38,7 +38,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" name="usuario" placeholder="E-mail">
+						<input type="text" class="form-control" name="usuario" placeholder="E-mail" value="{{$nombre}}">
 						
 					</div>
 					<div class="input-group form-group">
@@ -48,7 +48,13 @@
 						<input type="password" class="form-control" name="pass" placeholder="password">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						
+						<p>Remember Me</p>
+					</div>
+					<div class="row align-items-center remember">
+						
+						<input type="checkbox" class="form-check-input" name="checky" id="checky" value="checky" >
+						
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
