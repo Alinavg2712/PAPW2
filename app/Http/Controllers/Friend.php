@@ -11,17 +11,32 @@ class Friend extends Controller
     //
     public function eSolicitud(Request $request){
       
-       
-        $nfriend = new amigo();
-        $nfriend->mainuser_id =  Auth::User()->id;
-        $nfriend->frienduser_id =$request->id;
-        $nfriend->accept=0;
-     
-        $nfriend->save();
-      
-        return redirect('/home');
-        
-      
+        $idm=0;
+        $idm=$request->main;
+        $idr=0;
+        $idr=$request->Idf;
+        $idt=0;
+        $idt=$idr-$idt;
+          if(Auth::check())
+                {         
+               
+                
+                if($idt==0){
+                    return redirect('/friends/'.$request->idr);
+                }
+                else
+                {
+                   
+                    $nfriend = new amigo();
+                    $nfriend->mainuser_id =  Auth::User()->id;
+                    $nfriend->frienduser_id =$request->id;
+                    $nfriend->accept=0;
+                
+                    $nfriend->save();
+  
+                     return redirect('/home');
+                }
+            }
     }
     
      public function showU($id){
@@ -30,8 +45,7 @@ class Friend extends Controller
                             ->where('accept','=',0)
                             ->get();
           
-            $amigos=amigo::where('mainuser_id',$id)
-                           ->where('accept','=',1)
+            $amigos=amigo::where('accept','=',1)
                          ->get();
             
            $todo=amigo::where('mainuser_id',$id)

@@ -24,7 +24,10 @@ class loginController extends Controller
        }
        else{
             if(Auth::attempt($credenciales))
-            return redirect('/home');
+          {  return redirect('/home');}
+          else{
+            return redirect('/login');
+          }
        }
      
     }

@@ -40,17 +40,39 @@
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends">My Friends</a></li>
-              <li><a href="/comics">My List</a></li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
               <li><a href="/search">Search</a></li>
               <li><a href="/add">Add</a></li>
-              <li class="menu-has-children"><a href="">Join</a>
-                <ul>
-                  <li><a href="/login">Sign in</a></li>
-                  <li><a href="/register">Sign up</a></li>
-                </ul>
-              </li>
-           
+            
+              
+            
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                            
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </li>
+                  
             </ul>
           </nav><!-- #nav-menu-container -->
         </div>
@@ -94,21 +116,18 @@
                     </div>    
                
         
-               
                     <div id="catlist">
-                            <h1 class="text-center">My friends</h1>
-                        @foreach($rh as $usuario)
-                         <dl>
-                        <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->friends->name}} </p></dt> 
+                      <h1 class="text-center">My friends</h1>
+                      @foreach($rh as $usuario)
+                      <dl>
+                          @if($usuario->friends->id == Auth::user()->id)
+                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->users->name}} </p></dt> 
+                       @else
+                       <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->friends->name}} </p></dt> 
+                       @endif
                         <dl>
                         @endforeach  
-                      <!--  <dl>
-                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Frederik</a></dt>  
-                        </dl>
-                        <dl>
-                            <dt><img src="images/emoji2-01.png" alt="Product image" width="68" height="93" class="media-object"/><a href="#">Marcin</a></dt>
-                        </dl>
-                       -->
+                     
                     </div>    
                
           </div>

@@ -40,20 +40,17 @@
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends">My Friends</a></li>
-              <li><a href="/comics">My List</a></li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
               <li><a href="/search">Search</a></li>
               <li><a href="/add">Add</a></li>
-              <li class="menu-has-children"><a href="">Join</a>
-                        <ul>
-                          <li><a href="/login">Sign in</a></li>
-                          <li><a href="/register">Sign up</a></li>
-                        </ul>
-                      </li>
+            
+              
+            
                       <li class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image" >
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
                                 <strong>{{Auth::user()->name}}</strong>
                             </a>
                             <ul class="dropdown-menu">
@@ -63,7 +60,10 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <p>
-                                                    <a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                            
                                                 </p>
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@
                         
                                       
                 
-                                        <input type="text" id="mainId" name="mainId" value="{{Auth::user()->id}}">
+                                        <input type="hidden" id="mainId" name="mainId" value="{{Auth::user()->id}}">
                                       
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                                             <label class="label-input100" for="name">Title</label>

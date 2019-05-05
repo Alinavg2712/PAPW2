@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Categoria;
 use App\User;
 use App\Role;
+use App\ComicList;
 class UserController extends Controller
 {
     /**
@@ -90,8 +91,13 @@ class UserController extends Controller
     public function show($id)
     {
         //
+      
         $usuario=User::where('id',$id)->firstOrFail();
-        return view('profile',['th'=>$usuario]);
+
+        $listcomics=ComicList::where('user_id',$id)
+                            ->get();
+        return view('profile',['th'=>$usuario],['ch'=>$listcomics]);
+     
     }
 
     /**

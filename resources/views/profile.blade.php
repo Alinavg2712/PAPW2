@@ -53,38 +53,39 @@
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends">My Friends</a></li>
-              <li><a href="/comics">My List</a></li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
               <li><a href="/search">Search</a></li>
               <li><a href="/add">Add</a></li>
-              <li class="menu-has-children"><a href="">Join</a>
-                <ul>
-                  <li><a href="/login">Sign in</a></li>
-                  <li><a href="/register">Sign up</a></li>
-                </ul>
-              </li>
-              <li class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image" >
-                        <strong>Nombre</strong>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="divider"></li>
-                        <li>
-                            <div class="navbar-login navbar-login-session">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <p>
-                                            <a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
-                                        </p>
+              <li> <input type="hidden" name="main" value="{{Auth::user()->id}}"></li>
+              
+            
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                            
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-            </li>
+                    </li>
+                  
             </ul>
           </nav><!-- #nav-menu-container -->
         </div>
@@ -96,12 +97,12 @@
                 <div class="container">
                                         <div class="span3 well">
                                                         <center>
-                                                                        <img src="images/37.jpg" alt="Hero Imgs" height="422" width="1292">
+                                                                        <img src="{{$th->pic2}}" alt="Hero Imgs" height="422" width="1292">
                                                                             
                                                                  <div class="body">
                                                                             
                                                                             <section class="left-col user-info">
-                                                                                                <img src="images/36.jpg" name="aboutme"  width="140" height="140" class="img-circle">
+                                                                                                <img src="{{$th->pic1}}" name="aboutme"  width="140" height="140" class="img-circle">
                                                                                               <br>
                                                                                               <hr>
                                                                                               
@@ -112,7 +113,7 @@
                                         <div class="col-8">
                                             <strong>{{$th->slug}}</strong>  </div>
                                           <div class="col-8">
-                                          <input type="hidden"  name="id"value="{{$th->id}}">
+                                          <input type="hidden" id="user" name="id"value="{{$th->id}}">
                                           </div></div>
                                         <div class="form-group row">
                                           <label for="name" class="col-4 col-form-label">First Name</label> 
@@ -136,8 +137,9 @@
                                             </div> </div>
                                         <div class="form-group row">
                                           <div class="offset-4 col-8">
-                                          <input type="submit" value="Follow" class="btn float-right login_btn">
-                                          </div>
+                                          <input type="submit" id="togglee" value="Follow" class="btn float-right login_btn">
+                                        
+                                        </div>
                                         </div>
                                       </form>
                                                                                                 <br>
@@ -146,7 +148,7 @@
                                                                                     <div class="description text-center">
                                                                                             <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
                                                                                         </div>
-                                                                                        <div class="row">
+                                                                                      <!--  <div class="row">
                                                                                             <div class="col-md-6 ml-auto mr-auto">
                                                                                                 <div class="profile-tabs">
                                                                                                 <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
@@ -166,12 +168,12 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <br>
-                                                                                        <div class="tab-content tab-space">
-            <div class="tab-pane active text-center gallery" id="studio">
+                                                                                        <br>-->
+                                                                                   <!--      <div class="tab-content tab-space">
+           <div class="tab-pane active text-center gallery" id="studio">
   				<div class="row">
   					<div class="col-md-3 ml-auto">
-  					    <img src="images/10.jpg" class="rounded">
+  					   
   						<img src="images/5.jpg" class="rounded">
   					</div>
   					<div class="col-md-3 mr-auto">
@@ -193,7 +195,7 @@
       			</div>
   			</div>
           
-          </div>
+          </div>-->
                                                                         
                                                                         </section>
                                                                 </div>
@@ -259,7 +261,7 @@
   <script src="{{ URL::asset('js/owl.carousel.min.js')}}"></script>
   <script src="{{ URL::asset('js/wow.min.js')}}"></script>
   <script src="{{ URL::asset('js/modal-video.js')}}"></script>
-
+      
 
   <!-- Contact Form JavaScript File -->
  

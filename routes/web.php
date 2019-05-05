@@ -30,6 +30,7 @@ Route::get('/search', function () {
 });
 Route::get('/login', 'loginController@cook');
 
+
 Route::get('/friends/{id}','Friend@showU');
 Route::post('/friendA','Friend@friendA');
 

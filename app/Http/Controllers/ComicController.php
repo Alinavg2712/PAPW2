@@ -71,6 +71,13 @@ class ComicController extends Controller
             $media4->move(public_path().'/img/', $medianame4);
         
         }
+        if($request->file('vid')->isValid())
+        {
+            $media5 = $request->file('vid');
+            $medianame5= time().$media5->getClientOriginalName();
+            $media5->move(public_path().'/img/', $medianame5);
+        
+        }
         $com=new Comic();
         $com->nombre=$request->name;
         $com->description=$request->description;
@@ -80,7 +87,7 @@ class ComicController extends Controller
         $com->pic2 = $medianame2;
         $com->pic3 = $medianame3;
         $com->pic4 = $medianame4;
-        $com->video = 'video';
+        $com->video = $medianame5;
         $com->user_id=$request->mainId;
         $com->cat_id=$request->category;
         $com->save();
@@ -103,6 +110,8 @@ class ComicController extends Controller
     public function showArt($id)//id del comic
     {
         //
+      
+
         $lecomic=Comic::where('id',$id)->firstOrFail();
         $lescomments=Comentario::where('comic_id',$id)
         ->get(); 
@@ -113,8 +122,8 @@ class ComicController extends Controller
     {
         if(Auth::check())
         {
-        $lescomics=ComicList::where('user_id',$id)
-        ->get();  
+        $lescomics=ComicList::where('user_id',$id)->firstOrFail()
+                            ->get();  
        
      
         return view('comics',['th'=>$lescomics]);
@@ -128,28 +137,41 @@ class ComicController extends Controller
         {
              if(isset($request->Add))
              {
+                $lista=0;
+                $id=0;
+                $id=$request->Idf;
+                if(Auth::check())
+                {         $lista=ComicList::where('comic_id',$id)->count();}
+               
                 
+                if($lista==0){
                         $lelist = new ComicList();
                         $lelist->user_id =  Auth::User()->id;
                         $lelist->comic_id =$request->Idf;
-                       
-                        $lelist->save();
-      
-                 return redirect('/comics/'.$request->Idu);
-             }
-         }
+                    
+                        $lelist->save();  
+                        return redirect('/comics/'.$request->Idu);
+                }
+                else if ($lista>=1)
+                {
+                    return redirect('/comics/'.$request->Idu);
+                }
+           }
+                   
+        }
+        
          else{
          return redirect('/login');
          }
          }
+
          public function ComicD(Request $request){
             if(Auth::check())
                 {
                         
                         if(isset($request->Dismiss))
                         {
-                            $cmc=Comic::find($request->Idf);  
-                            $cmc->delete();
+                           
                             $cmclist=ComicList::find($request->Idf);  
                             $cmclist->delete();
                             return redirect('/comics/'.Auth::user()->id);
