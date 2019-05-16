@@ -68,7 +68,7 @@
                 <li class="nav navbar-nav navbar-right">
                   <li class="dropdown">
                       <a  class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                      <img src="../img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
                           <strong>{{Auth::user()->name}}</strong>
                       </a>
                       <ul class="dropdown-menu">
@@ -105,12 +105,12 @@
                 <div class="container">
                                         <div class="span3 well">
                                                         <center>
-                                                                        <img src="{{$th->pic2}}" alt="Hero Imgs" height="422" width="1292">
+                                                                        <img src="../img/{{$th->pic2}}" alt="Hero Imgs" height="422" width="1292">
                                                                             
                                                                  <div class="body">
                                                                             
                                                                             <section class="left-col user-info">
-                                                                                                <img src="{{$th->pic1}}" name="aboutme"  width="140" height="140" class="img-circle">
+                                                                                                <img src="../img/{{$th->pic1}}" name="aboutme"  width="140" height="140" class="img-circle">
                                                                                               <br>
                                                                                               <hr>
                                                                                               
@@ -168,7 +168,7 @@
            
             @if($usuario->friends->id == Auth::user()->id)
                        <img src="../img/{{$usuario->users->pic1}}" class="rounded" width="100px" height="100px"/>  <p> {{$usuario->users->name}} </p></dt> 
-                       @else
+                       @elseif ($usuario->users->id == Auth::user()->id)
                      <img src="../img/{{$usuario->friends->pic1}}" class="rounded"/>  <p> {{$usuario->friends->name}} </p></dt> 
                        @endif
                        
