@@ -65,7 +65,8 @@
                       <li class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                            <img src="../img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
                                 <strong>{{Auth::user()->name}}</strong>
                             </a>
                             <ul class="dropdown-menu">

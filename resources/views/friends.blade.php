@@ -133,7 +133,7 @@ Hero Section
                       <dl>
                           @if($usuario->friends->id == Auth::user()->id)
                         <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->users->name}} </p></dt> 
-                       @else
+                        @elseif ($usuario->users->id == Auth::user()->id)
                        <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->friends->name}} </p></dt> 
                        @endif
                         <dl>
