@@ -192,6 +192,7 @@ span {
   margin-right: 10px;
   margin-top: -2px;
 }
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -306,8 +307,47 @@ span {
 #hero .btns a:hover {
   color: #66ffff;
 }
+.preview {
+  margin-bottom: 20px;
+width: 300px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+#pic
+    {
+      margin-bottom: 20px;
+      width: 100px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
 
-
+    }
+#tab
+{
+  margin-bottom: 20px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+    
+}
+#video
+{
+  width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.login_btn{
+  color: black;
+  background-color: #66ffff;
+  width: 100px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  }
 /*--------------------------------------------------------------
 # Navigation Menu
 
@@ -663,7 +703,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
   /*==================================================================
   [ Contact more ]*/
   .contact100-more {
-    width: calc(100% - 560px);
+    width: calc(100% - 460px);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

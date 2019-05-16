@@ -14,27 +14,31 @@
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('/home', function () {
-    return view('home');
-});
+
+Route::get('/edit/{id}','ComicController@editShow');
+Route::post('/editC','ComicController@comicEdit');
+
+Route::get('/home','ComicController@Home');
+
 Route::get('/comics/{id}','ComicController@showCom');
 Route::post('/ComicD','ComicController@ComicD');
 
 Route::get('/article/{id}', 'ComicController@showArt');
 Route::post('/articleA','ComicController@comicAdd');
+Route::post('/articleL','ComicController@comicLikes');
 
 Route::post('/commentA','ComController@store');
 
-Route::get('/search', function () {
-    return view('search');
-});
+Route::get('/search', 'SearchController@load');
+Route::post('/searchS', 'SearchController@lockOn');
+
 Route::get('/login', 'loginController@cook');
 
 
 Route::get('/friends/{id}','Friend@showU');
 Route::post('/friendA','Friend@friendA');
 
-Route::get('/profile/{id}', 'UserController@show');
+Route::get('/profile/{id}', 'UserController@showUs');
 Route::post('/addfriend', 'Friend@eSolicitud');
 
 Route::post('/login','loginController@check');

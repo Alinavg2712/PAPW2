@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Comic</title>
+  <title>Profile</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -42,55 +42,63 @@
 
 <body>
 <header id="header" class="header header-hide">
-        <div class="container">
+<div class="container">
     
-          <div id="logo" class="pull-left">
-            <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
-          </div>
-    
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">
-              <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-              <li><a href="/search">Search</a></li>
+    <div id="logo" class="pull-left">
+      <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        @auth
+        <li class="menu-active"><a href="/home">Home</a></li>
+        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+       
+        <li><a href="/search">Search</a></li>
+        @if(Auth::user()->roles->first()->pivot->role_id == 1)
               <li><a href="/add">Add</a></li>
-              <li> <input type="hidden" name="main" value="{{Auth::user()->id}}"></li>
-              
-            
-                      <li class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                                <strong>{{Auth::user()->name}}</strong>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="navbar-login navbar-login-session">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p>
-                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
+             
+        @endif
         
-      </header><!-- #header -->
+        
+      
+                <li class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a  class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                          <strong>{{Auth::user()->name}}</strong>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="divider"></li>
+                          <li>
+                              <div class="navbar-login navbar-login-session">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <p>
+                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                          @endauth
+                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                      
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </li>
+            
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+
+</header><!-- #header -->
+
+
 
   <section id="hero" class="wow fadeIn">
     <div class="hero-container">
@@ -135,46 +143,39 @@
                                           <div class="col-8">
                                           <strong>{{$th->phone}}</strong>
                                             </div> </div>
+                                           
                                         <div class="form-group row">
                                           <div class="offset-4 col-8">
-                                          <input type="submit" id="togglee" value="Follow" class="btn float-right login_btn">
-                                        
+                                          @auth
+                                          @if(Auth::user()->id == $th->id)
+                                          @endif
+                                          @else <input type="submit" id="togglee" value="Follow" class="btn float-right login_btn">
+                                          @endauth
                                         </div>
                                         </div>
                                       </form>
                                                                                                 <br>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                    <div class="description text-center">
-                                                                                            <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-                                                                                        </div>
-                                                                                      <!--  <div class="row">
-                                                                                            <div class="col-md-6 ml-auto mr-auto">
-                                                                                                <div class="profile-tabs">
-                                                                                                <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                                                                                                    <li class="nav-item">
-                                                                                                        <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                                                                                        <i class="material-icons">camera</i>
-                                                                                                        Studio
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                    <li class="nav-item">
-                                                                                                        <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                                                                                        <i class="material-icons">palette</i>
-                                                                                                            Work
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <br>-->
-                                                                                   <!--      <div class="tab-content tab-space">
+                                                                                   
+                                                                                        <br>
+      <div class="tab-content tab-space">
            <div class="tab-pane active text-center gallery" id="studio">
   				<div class="row">
   					<div class="col-md-3 ml-auto">
-  					   
-  						<img src="images/5.jpg" class="rounded">
+            @foreach($qh as $usuario)
+           
+           
+            @if($usuario->friends->id == Auth::user()->id)
+                       <img src="../img/{{$usuario->users->pic1}}" class="rounded" width="100px" height="100px"/>  <p> {{$usuario->users->name}} </p></dt> 
+                       @else
+                     <img src="../img/{{$usuario->friends->pic1}}" class="rounded"/>  <p> {{$usuario->friends->name}} </p></dt> 
+                       @endif
+                       
+          
+             @endforeach  
+         
+  						
   					</div>
   					<div class="col-md-3 mr-auto">
   						<img src="images/7.jpg" class="rounded">
@@ -195,7 +196,7 @@
       			</div>
   			</div>
           
-          </div>-->
+          </div>
                                                                         
                                                                         </section>
                                                                 </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Add Comic</title>
+  <title>Edit Comic</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -90,9 +90,7 @@ Hero Section
 ============================-->
 
 
-<!--==========================
-Get Started Section
-============================-->
+
 
 
   
@@ -109,90 +107,97 @@ Get Started Section
                        
                         <div class="container-contact100">
                                 <div class="wrap-contact100">
-                                <form class="" method="post" action="/addC" enctype="multipart/form-data">
+                                <form class="" method="post" action="/editC" enctype="multipart/form-data" >
                                 @csrf
                                         <span class="contact100-form-title">
-                                           Add new Comic
+                                           Edit Comic
                                         </span>
                         
                                       
-                                       @auth
+                                        @auth
                                         <input type="hidden" id="mainId" name="mainId" value="{{Auth::user()->id}}">
                                       @endauth
+                                        <input type="hidden" id="cmcId" name="cmcId" value="{{$th->id}}">
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
                                             <label class="label-input100" for="name">Title</label>
-                                            <input id="name" class="input100" type="text" name="name" placeholder="Enter title...">
+                                            <input id="name" class="input100" type="text" name="name" value="{{$th->nombre}}">
                                             <span class="focus-input100"></span>
                                         </div> 
                                         <div class="wrap-input100 validate-input" data-validate = "Message is required">
                                                 <label class="label-input100" for="message">Description</label>
-                                                <textarea id="message" class="input100" name="description" placeholder="Type your message here..."></textarea>
+                                             <textarea id="message" class="input100" name="description" value="{{$th->description}}">{{$th->description}}</textarea>
+                                            
                                                 <span class="focus-input100"></span>
                                             </div>
                                             <div class="wrap-input100">
                                                     <div class="label-input100">Category</div>
                                                     <div>
-                                                        <select class="js-select2" name="category">
-                                                        <option>-->//////<--</option>
+                                                    <input type="hidden" id="mainId" name="mainId" value="{{$th->cat_id}}">
+                                                        <select class="js-select2" name="category" value="{{$th->cat_id}}" >
+                                                        <option value="0">-->//////<--</option>
                                                         @foreach($ch as $cat)
-                                                           
-                                                         
-                                                           <option>{{$cat->nombre}}</option>
-                                                           
+                                                           @if($th->cat_id == $cat->id)
+                                                           <option value="{{$cat->id}}" selected>{{$cat->nombre}}</option>
+                                                           @else
+                                                           <option value="{{$cat->id}}">{{$cat->nombre}}</option>
+                                                            @endif
                                                           @endforeach  
-                                                            
                                                         </select>
                                                         <div class="dropDownSelect2"></div>
                                                     </div>
                                                     <span class="focus-input100"></span>
                                                 </div>
                                                 
-                                           
-                                          
-   
-                 
+                                         
+                                                
+                                                
+                                                
                                                 <label class="label-input100" for="email">Video</label>
-                                              <div class="input-group form-group" data-validate="Name is required">
-                                                <input type="file"  name="vid" id="vid" required  />
+                                                <video id="video" controls>
+                                                    <source src="../img/{{$th->video}}" type="video/mp4">
+                                                </video>
+                                                <div class="input-group form-group" data-validate="Name is required">
+                                                <input type="file"  name="vid" id="vid" value="{{$th->video}}" required  />
                                               
                                         </div>
                                         <label class="label-input100" for="email">Picture 1</label>
                                         <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                            
-                                                <input type="file"   name="img1" id="img1"  required />
+                                                <img src="../img/{{$th->pic1}}" id="pic" alt="About">
+                                                <input type="file"   name="img1" id="img1"  value="{{$th->pic1}}" required />
                                                  
                                                 <span class="focus-input100"></span>
                                             </div>
                                             <label class="label-input100" for="email">Picture 2</label>
                                             <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                                
-                                                    <input type="file"   name="img2" id="img2"  required />
+                                            <img src="../img/{{$th->pic2}}" id="pic" alt="About">
+                                                    <input type="file"   name="img2" id="img2"  value="{{$th->pic2}}" required />
                                                     
                                                     <span class="focus-input100"></span>
                                                 </div>
                                                 <label class="label-input100" for="email">Picture 3</label>
                                                 <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                                    
-                                                        <input type="file"   name="img3" id="img3"  required />
+                                                <img src="../img/{{$th->pic3}}" id="pic" alt="About">
+                                                        <input type="file"   name="img3" id="img3"  value="{{$th->pic3}}" required />
                                                          
                                                         <span class="focus-input100"></span>
                                                     </div>
                                                     <label class="label-input100" for="email">Picture 4</label>
                                                     <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                                    
-                                                            <input type="file"name="img4" id="img4"  required />
+                                                    <img src="../img/{{$th->pic4}}" id="pic" alt="About">
+                                                            <input type="file"name="img4" id="img4"  value="{{$th->pic4}}" required />
                                                                     <span class="focus-input100"></span>
                                                         </div>
                                       
                         
                                         <div class="container-contact100-form-btn">
-                                        <input type="submit" value="Add" class="btn float-right login_btn">
+                                        <input type="submit" id="stuff_sell"  class="btn btn-info" name="Dismiss" value="Change">
+                                        <input type="submit" id="stuff_sell"  class="btn btn-info" name="Dismiss" value="Dismiss">
                                         </div>
                         
                                      
                                     </form>
                         
-                                    <div class="contact100-more flex-col-c-m" style="background-image: url('images/54.JPG');">
+                                    <div class="contact100-more flex-col-c-m" style="background-image: url('../images/71.JPG');">
                                     
                                     </div>
                                 </div>

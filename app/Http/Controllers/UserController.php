@@ -8,6 +8,7 @@ use App\Categoria;
 use App\User;
 use App\Role;
 use App\ComicList;
+use App\amigo;
 class UserController extends Controller
 {
     /**
@@ -92,14 +93,36 @@ class UserController extends Controller
     {
         //
       
-        $usuario=User::where('id',$id)->firstOrFail();
-
+        $usuario=User::where('id',$id)->first();
+                     
+        $todo=amigo::where('accept','=',1);
+                   
+                  
         $listcomics=ComicList::where('user_id',$id)
                             ->get();
-        return view('profile',['th'=>$usuario],['ch'=>$listcomics]);
+    
+        return view('profile',['th'=>$usuario,'qh'=>$listcomics]);
      
     }
-
+    public function showUs($id)
+    {
+        //
+      
+        $usuario=User::where('id',$id)->first();
+                     
+        $todo=amigo::where('accept','=',1)
+                    ->get();
+                    
+                   
+       
+             
+         
+      
+                            
+    
+        return view('profile',['th'=>$usuario,'qh'=>$todo]);
+     
+    }
     /**
      * Show the form for editing the specified resource.
      *

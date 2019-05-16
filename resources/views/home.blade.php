@@ -49,12 +49,17 @@
     
           <nav id="nav-menu-container">
             <ul class="nav-menu">
+              @auth
               <li class="menu-active"><a href="/home">Home</a></li>
               <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
               <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+             
               <li><a href="/search">Search</a></li>
-              <li><a href="/add">Add</a></li>
-            
+              @if(Auth::user()->roles->first()->pivot->role_id == 1)
+                    <li><a href="/add">Add</a></li>
+                   
+              @endif
+              
               
             
                       <li class="nav navbar-nav navbar-right">
@@ -71,6 +76,7 @@
                                             <div class="col-lg-12">
                                                 <p>
                                                 <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                @endauth
                                                 <a href="/login" class="btn btn-danger btn-block">Sign in</a>
                                                 <a href="/register" class="btn btn-danger btn-block">Sign up</a>
                                             
@@ -86,6 +92,7 @@
             </ul>
           </nav><!-- #nav-menu-container -->
         </div>
+      
       </header><!-- #header -->
 
   <!--==========================
@@ -118,36 +125,18 @@
 
     <div class="container">
       <div class="row">
-
+      @foreach($th as $cmc)
         <div class="col-md-6 col-lg-4">
           <div class="feature-block">
 
-            <img src="images/14.jpg" alt="img" class="img-fluid" >
-            <h4>Title</h4>
-            <a href="/article">read more</a>
+            <img src="../img/{{$cmc->pic1}}" alt="img" class="img-fluid" >
+           
+            <a href="/article/{{$cmc->id}}" class="btn float-right login_btn" > <h4>{{$cmc->nombre}}</h4></a>
 
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="images/27.jpg" alt="img" class="img-fluid">
-            <h4>Title</h4>
-            <a href="/article">read more</a>
-
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="images/4.jpg" alt="img" class="img-fluid">
-            <h4>Title</h4>
-            <a href="/article">read more</a>
-
-          </div>
-        </div>
+        @endforeach  
+      
 
       </div>
     </div>

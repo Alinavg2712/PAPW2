@@ -26,68 +26,91 @@
 
 <body>
 <header id="header" class="header header-hide">
-        <div class="container">
+<div class="container">
     
-          <div id="logo" class="pull-left">
-            <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
-          </div>
-    
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">
-              <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-              <li><a href="/search">Search</a></li>
+    <div id="logo" class="pull-left">
+      <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        @auth
+        <li class="menu-active"><a href="/home">Home</a></li>
+        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+       
+        <li><a href="/search">Search</a></li>
+        @if(Auth::user()->roles->first()->pivot->role_id == 1)
               <li><a href="/add">Add</a></li>
+             
+        @endif
+        
+        
+      
+                <li class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a  class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                          <strong>{{Auth::user()->name}}</strong>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="divider"></li>
+                          <li>
+                              <div class="navbar-login navbar-login-session">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <p>
+                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                          @endauth
+                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                      
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </li>
             
-              
-            
-                      <li class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                                <strong>{{Auth::user()->name}}</strong>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="navbar-login navbar-login-session">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p>
-                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
-      </header><!-- #header -->
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+
+</header><!-- #header -->
+
+<!--==========================
+Hero Section
+============================-->
+<!-- #hero -->
+
+<!--==========================
+Get Started Section
+============================-->
+
 
   
   <section id="hero" >
       
     <div class="hero-container">
-        
+
+    <form class="" method="post" action="/searchS" >
+			 	@csrf
             <div class="container">
                     <div class="row justify-content-center">
                           <div class="searchbar">
-                                  <input class="search_input" type="text" name="" placeholder="Search...">
+                                  <input class="search_input" type="text" name="bar" placeholder="Search...">
                                   <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
                                 </div>
                     </div>
                   </div>
+                                   <input type="radio" name="gender" value="1"> User
+                                  <input type="radio" name="gender" value="2"> Comic
+                                  <input type="radio" name="gender" value="3"> Category 
+    </form>
          <!--==========================
     About Us Section
   ============================-->
@@ -96,25 +119,40 @@
             
           <div class="row justify-content-center">
                
-                          
+        
+                        
                             <div id="catlist">
-                        <dl>
-                            <dt><img src="images/49.jpg" alt="Product image" width="68" height="93" /><a href="#">Young Avengers #10</a></dt>   
-                        </dl>
-                        <dl>
-                            <dt><img src="images/50.jpg" alt="Product image" width="68" height="93" /><a href="#">Hawkeye (2016) #12</a></dt>
-                        </dl>
-                        <dl>
-                            <dt><img src="images/51.jpg" alt="Product image" width="68" height="93" /><a href="#">West Coast Avengers #7</a></dt>
-                        </dl>
-                        <dl>
-                            <dt><img src="images/52.jpg" alt="Product image" width="68" height="93" /><a href="#">The Silver Surfer #1</a></dt>
-                        </dl>
-                        <dl>
-                            <dt><img src="images/28.jpg" alt="Product image" width="68" height="93" /><a href="#">The Mighty Thor #17</a></dt>
-                        </dl>
-                    </div>
-                    
+                            @if($ch == 1)
+                              @if($details == null)
+                                           <dl>
+                                              <dt><td>No Details found. Try to search again !</td></dt>   
+                                          </dl>
+                              @else
+                                 @foreach($details as $user)
+                                          <dl>
+                                              <dt><img src="../img/{{$user->pic1}}" alt="Product image" width="68" height="93" /><a href="/profile/{{$user->id}}"><td>{{$user->name}}</td></a></dt>   
+                                          </dl>
+                                
+                                  @endforeach   
+                              @endif    
+                            @elseif($ch == 2)
+                                @if(empty($fu))
+                                              <dl>
+                                                  <dt><td>No Details found. Try to search again !</td></dt>   
+                                              </dl>
+                                  @else
+                                
+                                      @foreach($details as $cmc)
+                                              <dl>
+                                                  <dt><img src="../img/{{$cmc->pic1}}" alt="Product image" width="68" height="93" /> <a href="/article/{{$cmc->id}}" class="btn float-right login_btn" > <td>{{$cmc->nombre}}</td></a></dt>   
+                                              </dl>
+                                    
+                                      @endforeach
+                                  @endif
+                            @endif
+                           
+                          </div>
+                  
                     
                       
                        

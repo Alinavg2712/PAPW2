@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         $admin->save();
         $admin->roles()->attach($role_admin);
 
-        $role_admin = Role::where('name','admin')->first();
+        $role_admin = Role::where('name','user')->first();
         $user = new User();
         $user->name = 'Luka';
         $user->email = 'luka@example.com';

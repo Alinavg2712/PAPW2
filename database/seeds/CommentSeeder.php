@@ -18,6 +18,12 @@ class CommentSeeder extends Seeder
         $comment->user_id = 1;
         $comment->save();
 
+        $comment = new Comentario();
+        $comment->description = 'Bad stuff!';
+        $comment->comic_id = 1;
+        $comment->user_id = 2;
+        $comment->save();
+
        
     }
 }

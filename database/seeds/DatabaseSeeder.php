@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
          $this->call(ComicListTableSeeder::class);
          $this->call(CommentSeeder::class);
          $this->call(FriendTableSeeder::class);
+         $this->call(CatTableSeeder::class);
+         $this->call(LikesSeeder::class);
     }
 }

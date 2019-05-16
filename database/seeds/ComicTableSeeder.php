@@ -24,7 +24,7 @@ class ComicTableSeeder extends Seeder
         $comic->pic4 = '../images/64.jpg';
         $comic->video = '../images/61.mp4';
         $comic->user_id = 1;
-        $comic->cat_id = 1;
+        $comic->cat_id = 2;
         $comic->save();
 
         $comic = new Comic();
@@ -52,7 +52,7 @@ class ComicTableSeeder extends Seeder
         $comic->pic4 = '../images/60.jpg';
         $comic->video = '../images/61.mp4';
         $comic->user_id = 1;
-        $comic->cat_id = 1;
+        $comic->cat_id = 2;
         $comic->save();
       
 

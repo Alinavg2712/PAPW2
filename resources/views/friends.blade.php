@@ -29,55 +29,66 @@
 
 <body>
 <header id="header" class="header header-hide">
-        <div class="container">
+<div class="container">
     
-          <div id="logo" class="pull-left">
-            <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
-          </div>
-    
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">
-              <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-              <li><a href="/search">Search</a></li>
+    <div id="logo" class="pull-left">
+      <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        @auth
+        <li class="menu-active"><a href="/home">Home</a></li>
+        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+       
+        <li><a href="/search">Search</a></li>
+        @if(Auth::user()->roles->first()->pivot->role_id == 1)
               <li><a href="/add">Add</a></li>
-            
-              
-            
-                      <li class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                                <strong>{{Auth::user()->name}}</strong>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="navbar-login navbar-login-session">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p>
-                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
+             
+        @endif
         
-      </header><!-- #header -->
+        
+      
+                <li class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a  class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                          <strong>{{Auth::user()->name}}</strong>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="divider"></li>
+                          <li>
+                              <div class="navbar-login navbar-login-session">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <p>
+                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                          @endauth
+                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                      
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </li>
+            
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+
+</header><!-- #header -->
+
+<!--==========================
+Hero Section
+============================-->
+
 
   
   <section id="hero" >

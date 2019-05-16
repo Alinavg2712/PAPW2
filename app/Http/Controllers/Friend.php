@@ -53,7 +53,7 @@ class Friend extends Controller
                        ->get();
                           
                         
-            return view('friends',['th'=>$solicitudes],['rh'=>$amigos]);
+            return view('friends',['th'=>$solicitudes,'rh'=>$amigos]);
             
      }
      public function friendA(Request $request){

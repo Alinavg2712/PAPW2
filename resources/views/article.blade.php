@@ -42,53 +42,80 @@
 
 <body>
 <header id="header" class="header header-hide">
-        <div class="container">
+<div class="container">
     
-          <div id="logo" class="pull-left">
-            <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
-          </div>
-    
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">
-              <li class="menu-active"><a href="/home">Home</a></li>
-              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-              <li><a href="/search">Search</a></li>
+    <div id="logo" class="pull-left">
+      <h1><a href="/home" class="scrollto"><span>B</span>amboozled</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        @auth
+        <li class="menu-active"><a href="/home">Home</a></li>
+        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+       
+        <li><a href="/search">Search</a></li>
+        @if(Auth::user()->roles->first()->pivot->role_id == 1)
               <li><a href="/add">Add</a></li>
+             
+        @endif
+        
+        
+      
+                <li class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a  class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                          <strong>{{Auth::user()->name}}</strong>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="divider"></li>
+                          <li>
+                              <div class="navbar-login navbar-login-session">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <p>
+                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                          @endauth
+                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                                      
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </li>
             
-              
-            
-                      <li class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                                <strong>{{Auth::user()->name}}</strong>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="navbar-login navbar-login-session">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <p>
-                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+
+</header><!-- #header -->
+
+<!--==========================
+Hero Section
+============================-->
+
+
+<!--==========================
+Get Started Section
+============================-->
+<section id="get-started" class="padd-section text-center wow fadeInUp">
+
+
+<div class="container">
+<div class="row">
+
+
+
+</div>
+</div>
       </header><!-- #header -->
 
   <section id="hero" class="wow fadeIn">
@@ -114,43 +141,46 @@
                             <p>{{$th->description}}
                             </p>
                             <input type="hidden" id="Idf" name="Idf" value="{{$th->id}}">
+                            @auth
                             <input type="hidden" id="Idu" name="Idu" value="{{Auth::user()->id}}">
+                            @endauth
                         </div>
                     
                     
                                             <div class="rating-block">
-                                                <h4>Average user rating</h4>
-                                                <h2 class="bold padding-bottom-7">{{$th->likes}} <small>/ 5</small></h2>
-                                                <button type="button" class="star" aria-label="Left Align">
-                                                <span class="fa fa-star" aria-hidden="true"></span>
-                                                </button>
-                                                <button type="button" class="star" aria-label="Left Align">
-                                                <span class="fa fa-star" aria-hidden="true"></span>
-                                                </button>
-                                                <button type="button" class="star" aria-label="Left Align">
-                                                <span class="fa fa-star" aria-hidden="true"></span>
-                                                </button>
-                                                <button type="button" class="star" aria-label="Left Align">
-                                                <span class="fa fa-star" aria-hidden="true"></span>
-                                                </button>
-                                                <button type="button" class="star" aria-label="Left Align">
-                                                <span class="fa fa-star" aria-hidden="true"></span>
-                                                </button>
+                                                <h4>User rating</h4>
+                                                <h2 class="bold padding-bottom-7">{{$th->likes}} </h2>
+                                               
                                             </div>
                                             <div class="form-group">
                                                     <input type="submit" name="Add" value="Add" class="btn float-right login_btn">
+  @auth
+ @if(Auth::User()->roles->first()->pivot->role_id == 1)
+    <a href="/edit/{{$th->id}}" class="btn float-right login_btn" >Edit</a>
+     <!--  <input type="text" id="Idf" name="Idf" value="{{Auth::User()->roles->first()->pivot->role_id}}">-->
+  @endif
+   @endauth
                                                 
                                                 </div>
                             </div>
                 </form>
+                <form class="" method="post" action="/articleL" >
+			 	@csrf
+         <input type="hidden" id="Idf" name="Idf" value="{{$th->id}}">    
+         <input type="hidden" id="val" name="val" value="{{$th->likes}}">    
+                    
+         @if ($gh > 0)
+                                                    <input type="submit" name="Like" value="Dislike" class="btn float-right login_btn">
+                               @else                    
+                                                    <input type="submit" name="Like" value="Likes" class="btn float-right login_btn">
+                              @endif
+                 </form>
           </div>
         </div>
       </section>
     </div>
     </section><!-- #hero -->
   <div id="tab" >
-
-
               <ul id="pic" class="preview-thumbnail nav nav-tabs">
 
                 <li class="active">
@@ -228,6 +258,7 @@
               
             </div>	
             <div class="coment-form">
+            @auth
                 <h4>Leave your comment</h4>
                 <form class="" method="post" action="/commentA">
                 @csrf
@@ -236,7 +267,7 @@
                     <textarea name="comm" required="">Your Comment...</textarea>
                     <input type="submit" name="Sub" value="Submit Comment" >
                 </form>
-    
+            @endauth
 
 
 </div>	
