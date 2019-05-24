@@ -29,5 +29,16 @@ class ComicListTableSeeder extends Seeder
         $comic->user_id = 1;
         $comic->save();
        
+        $comic = new ComicList();
+        $comic->comic_id = 1;
+        $comic->user_id = 2;
+        $comic->save();
+
+        $comic = new ComicList();
+        $comic->comic_id = 3;
+        $comic->user_id = 3;
+        $comic->save();
+
+       
     }
 }

@@ -37,53 +37,62 @@
       <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
     </div>
 
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        @auth
-        <li class="menu-active"><a href="/home">Home</a></li>
-        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-       
-        <li><a href="/search">Search</a></li>
-        @if(Auth::user()->roles->first()->pivot->role_id == 1)
-              <li><a href="/add">Add</a></li>
+  <nav id="nav-menu-container">
+            <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
+              @auth
              
-        @endif
-        
-        
-      
-                <li class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                      <a  class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                          <strong>{{Auth::user()->name}}</strong>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li class="divider"></li>
-                          <li>
-                              <div class="navbar-login navbar-login-session">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                          <p>
-                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                          @endauth
-                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                      
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                  </li>
-              </li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+             
+              @if(Auth::user()->roles->first()->pivot->role_id == 1)
+                    <li><a href="/add">Add</a></li>
+                   
+              @endif
+              
+              
             
-      </ul>
-    </nav><!-- #nav-menu-container -->
-  </div>
-
-</header><!-- #header -->
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
+      </header><!-- #header -->
 
 <!--==========================
 Hero Section
@@ -114,7 +123,7 @@ Hero Section
                         <form class="" method="post" action="/friendA" >
 					              	@csrf
                         <input type="hidden" id="Idf" name="Idf" value="{{$usuario->id}}">
-                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/> <p> {{$usuario->users->name}} </p></dt> 
+                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/><a href="/profile/{{$usuario->users->id}}" class="btn float-right login_btn" >  {{$usuario->users->name}} </a> </dt> 
                         <dd></dd>
                              <input type="submit" id="stuff_edit"  class="btn btn-info" name="Add" value="Add">
                              <input type="submit" id="stuff_sell"  class="btn btn-info" name="Dismiss" value="Dismiss">
@@ -132,9 +141,9 @@ Hero Section
                       @foreach($rh as $usuario)
                       <dl>
                           @if($usuario->friends->id == Auth::user()->id)
-                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->users->name}} </p></dt> 
+                        <dt><img src="../img/{{$usuario->users->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>   <a href="/profile/{{$usuario->users->id}}" class="btn float-right login_btn" >  {{$usuario->users->name}} </a> </dt> 
                         @elseif ($usuario->users->id == Auth::user()->id)
-                       <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/>  <p> {{$usuario->friends->name}} </p></dt> 
+                       <dt><img src="../img/{{$usuario->friends->pic1}}" alt="Product image" width="68" height="93" class="media-object"/> <a href="/profile/{{$usuario->friends->id}}" class="btn float-right login_btn" >  {{$usuario->friends->name}} </a> </dt> 
                        @endif
                         <dl>
                         @endforeach  

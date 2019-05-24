@@ -44,6 +44,22 @@ class UserTableSeeder extends Seeder
         $user->video = 'video';
         $user->save();
         $user->roles()->attach($role_admin);
+
+        $role_admin = Role::where('name','user')->first();
+        $user = new User();
+        $user->name = 'Lila';
+        $user->email = 'lila@example.com';
+        $user->password = Hash::make('her');
+        $user->slug = 'Volpina';
+        $user->phone = '774598126';
+        $user->address = 'P.Sherman 43';
+        $user->pic1 = '../images/73.jpg';
+        $user->pic2 = '../images/vector2.png';
+        $user->pic3 = 'img3';
+        $user->pic4 = 'img4';
+        $user->video = 'video';
+        $user->save();
+        $user->roles()->attach($role_admin);
      
       
      

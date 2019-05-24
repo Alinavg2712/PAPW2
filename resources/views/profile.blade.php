@@ -50,53 +50,62 @@
       <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
     </div>
 
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        @auth
-        <li class="menu-active"><a href="/home">Home</a></li>
-        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-       
-        <li><a href="/search">Search</a></li>
-        @if(Auth::user()->roles->first()->pivot->role_id == 1)
-              <li><a href="/add">Add</a></li>
+     <nav id="nav-menu-container">
+            <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
+              @auth
              
-        @endif
-        
-        
-      
-                <li class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                      <a  class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="../img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                          <strong>{{Auth::user()->name}}</strong>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li class="divider"></li>
-                          <li>
-                              <div class="navbar-login navbar-login-session">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                          <p>
-                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                          @endauth
-                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                      
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                  </li>
-              </li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+             
+              @if(Auth::user()->roles->first()->pivot->role_id == 1)
+                    <li><a href="/add">Add</a></li>
+                   
+              @endif
+              
+              
             
-      </ul>
-    </nav><!-- #nav-menu-container -->
-  </div>
-
-</header><!-- #header -->
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
+      </header><!-- #header -->
 
 
 
@@ -116,6 +125,8 @@
                                                                                               
                                          <form class="" method="post" action="/addfriend" >
 					                   	@csrf
+                               <input type="hidden" id="main" name="main" value="{{Auth::user()->id}}">
+                               <input type="hidden" id="Idf" name="Idf" value="{{$th->id}}">
                                       <div class="form-group row">
                                         <label for="username" class="col-4 col-form-label">User Name*</label> 
                                         <div class="col-8">
@@ -148,8 +159,8 @@
                                           <div class="offset-4 col-8">
                                           @auth
                                           @if(Auth::user()->id == $th->id)
-                                          @endif
                                           @else <input type="submit" id="togglee" value="Follow" class="btn float-right login_btn">
+                                          @endif
                                           @endauth
                                         </div>
                                         </div>
@@ -160,16 +171,18 @@
                                                                                    
                                                                                         <br>
       <div class="tab-content tab-space">
-           <div class="tab-pane active text-center gallery" id="studio">
+          @auth
+          <div class="tab-pane active text-center gallery" id="studio">
+              <strong> Friends</strong>
   				<div class="row">
   					<div class="col-md-3 ml-auto">
             @foreach($qh as $usuario)
            
            
             @if($usuario->friends->id == Auth::user()->id)
-                       <img src="../img/{{$usuario->users->pic1}}" class="rounded" width="100px" height="100px"/>  <p> {{$usuario->users->name}} </p></dt> 
+                       <img src="../img/{{$usuario->users->pic1}}" class="rounded" width="100px" height="100px"/> <a href="/profile/{{$usuario->users->id}}" class="btn float-right login_btn" >  {{$usuario->users->name}} </a> 
                        @elseif ($usuario->users->id == Auth::user()->id)
-                     <img src="../img/{{$usuario->friends->pic1}}" class="rounded"/>  <p> {{$usuario->friends->name}} </p></dt> 
+                     <img src="../img/{{$usuario->friends->pic1}}" class="rounded" width="100px" height="100px"/> <a href="/profile/{{$usuario->friends->id}}" class="btn float-right login_btn" >  {{$usuario->friends->name}} </a>  
                        @endif
                        
           
@@ -177,35 +190,70 @@
          
   						
   					</div>
-  					<div class="col-md-3 mr-auto">
-  						<img src="images/7.jpg" class="rounded">
-  						<img src="images/32.jpg" class="rounded">
-  					</div>
-  				</div>
-  			</div>
-            <div class="tab-pane text-center gallery" id="works">
-      			<div class="row">
-      				<div class="col-md-3 ml-auto">
-                      <img src="images/13.jpg" class="rounded">
-  					  <img src="images/11.jpg" class="rounded">
-  										</div>
-      				<div class="col-md-3 mr-auto">
-                      <img src="images/49.jpg" class="rounded">
-                      <img src="images/51.jpg" class="rounded">
-      				</div>
-      			</div>
-  			</div>
-          
+            <div class="col-md-5 ml-auto">
+                <strong> Recommendations</strong>
+            @foreach($qh as $usuario)
+              @foreach($ph as $recs)
+           
+           
+                    @if($usuario->friends->id == Auth::user()->id)
+                              @if($usuario->users->id == $recs->user_id)
+                              <p>{{$usuario->users->name}} recommends</p>
+                             
+                                <img src="../img/{{$recs->comics->pic1}}" class="rounded" width="100px" height="150px"/> <a href="/article/{{$recs->comics->id}}" class="btn float-right login_btn" >  {{$recs->comics->nombre}} </a>
+                              @else
+                             
+                              @endif
+                    @elseif ($usuario->users->id == Auth::user()->id)
+                              @if($usuario->friends->id == $recs->user_id)
+                              <p>{{$usuario->friends->name}} recommends</p>
+                             
+                              <img src="../img/{{$recs->comics->pic1}}" class="rounded" width="100px" height="150px"/> <a href="/article/{{$recs->comics->id}}" class="btn float-right login_btn" >  {{$recs->comics->nombre}} </a>
+                              @else
+                            
+                              @endif
+                    @endif
+                      
+         
+               @endforeach  
+            @endforeach  
+            @endauth
+            
           </div>
-                                                                        
-                                                                        </section>
-                                                                </div>
-                                                        </center>
+          
+        
+           
+         
+        </section>
+        <div class="col-md-9 ml-auto">
+    
+          <strong> Pending</strong>
+          <hr>
+          <div class="span3 well">
+            @foreach($npb as $notpublished)
+            <img src="../img/{{$notpublished->pic1}}"width="90px" height="150px"/> <a href="/article/{{$notpublished->id}}"  >  {{$notpublished->nombre}} </a>  
+            @endforeach  
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-9 ml-auto">
+    
+    <strong> Published</strong>
+    <hr>
+    <div class="span3 well">
+      @foreach($pb as $published)
+      <img src="../img/{{$published->pic1}}"width="90px" height="150px"/> <a href="/article/{{$published->id}}"  >  {{$published->nombre}} </a>  
+      @endforeach  
+    </div>
+  </div>
+</div>
+    </center>
                                     </div>
                         </div>
     </div>
   </section><!-- #hero -->
-
+<hr>
 
     <!--==========================
     Article Section

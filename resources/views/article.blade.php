@@ -50,15 +50,15 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
           </div>
-    
           <nav id="nav-menu-container">
             <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
               @auth
-              <li class="menu-active"><a href="/home">Home</a></li>
+             
               <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
               <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
              
-              <li><a href="/search">Search</a></li>
               @if(Auth::user()->roles->first()->pivot->role_id == 1)
                     <li><a href="/add">Add</a></li>
                    
@@ -69,7 +69,8 @@
                       <li class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
                                 <strong>{{Auth::user()->name}}</strong>
                             </a>
                             <ul class="dropdown-menu">
@@ -80,23 +81,30 @@
                                             <div class="col-lg-12">
                                                 <p>
                                                 <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                @endauth
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
                                             </div>
+                                          </div>
                                         </div>
-                                    </div>
+                                      </li>
+                                    </ul>
+                                  </li>
                                 </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
-      
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
       </header><!-- #header -->
 <!--==========================
 Hero Section
@@ -128,9 +136,9 @@ Get Started Section
   <section id="about-us" class="about-us padd-section wow fadeInUp">
         <div class="container">
           <div class="row justify-content-center">
-                <div class="col-md-7 col-lg-5">
+                <div >
           
-              <img src="../img/{{$th->pic1}}" alt="About">
+              <img src="../img/{{$th->pic1}}" alt="About" width="370px" height="530px">
             </div>
             <form class="" method="post" action="/articleA" >
 			 	@csrf
@@ -148,13 +156,13 @@ Get Started Section
                     
                     
                                             <div class="rating-block">
-                                                <h4>User rating</h4>
+                                                <h4>User likes</h4>
                                                 <h2 class="bold padding-bottom-7">{{$th->likes}} </h2>
                                                
                                             </div>
+                                            @auth
                                             <div class="form-group">
                                                     <input type="submit" name="Add" value="Add" class="btn float-right login_btn">
-  @auth
  @if(Auth::User()->roles->first()->pivot->role_id == 1)
     <a href="/edit/{{$th->id}}" class="btn float-right login_btn" >Edit</a>
      <!--  <input type="text" id="Idf" name="Idf" value="{{Auth::User()->roles->first()->pivot->role_id}}">-->
@@ -168,13 +176,14 @@ Get Started Section
 			 	@csrf
          <input type="hidden" id="Idf" name="Idf" value="{{$th->id}}">    
          <input type="hidden" id="val" name="val" value="{{$th->likes}}">    
-                    
+        @auth        
          @if ($gh > 0)
                                                     <input type="submit" name="Like" value="Dislike" class="btn float-right login_btn">
                                @else                    
                                                     <input type="submit" name="Like" value="Likes" class="btn float-right login_btn">
                               @endif
                  </form>
+        @endauth
           </div>
         </div>
       </section>
@@ -213,7 +222,7 @@ Get Started Section
                     <strong>Review</strong>
                   </h3>
                   
-                  <video controls>
+                  <video controls  style="display: block; margin-left: auto;margin-right:auto">
                       <source src="../img/{{$th->video}}" type="video/mp4">
                   </video>
                <!--   <div class="embed-responsive embed-responsive-16by9">

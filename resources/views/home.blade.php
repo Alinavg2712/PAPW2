@@ -49,12 +49,13 @@
     
           <nav id="nav-menu-container">
             <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
               @auth
-              <li class="menu-active"><a href="/home">Home</a></li>
+             
               <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
               <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
              
-              <li><a href="/search">Search</a></li>
               @if(Auth::user()->roles->first()->pivot->role_id == 1)
                     <li><a href="/add">Add</a></li>
                    
@@ -65,7 +66,7 @@
                       <li class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
                                    
                                 <strong>{{Auth::user()->name}}</strong>
                             </a>
@@ -77,23 +78,30 @@
                                             <div class="col-lg-12">
                                                 <p>
                                                 <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                                @endauth
-                                                <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                                <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                            
-                                                </p>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
                                             </div>
+                                          </div>
                                         </div>
-                                    </div>
+                                      </li>
+                                    </ul>
+                                  </li>
                                 </li>
-                            </ul>
-                        </li>
-                    </li>
-                  
-            </ul>
-          </nav><!-- #nav-menu-container -->
-        </div>
-      
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
       </header><!-- #header -->
 
   <!--==========================
@@ -152,14 +160,14 @@
       <div class="row justify-content-center">
 
         <div class="col-md-5 col-lg-3">
-          <img src="images/20.jpg" alt="About">
+          <img src="../img/{{$tp->pic1}}" alt="About">
         </div>
 
         <div class="col-md-7 col-lg-5">
           <div class="about-content">
 
             <h2><span>Top</span>of the Week </h2>
-            <p>The best of the best this week.
+            <p>{{$tp->nombre}}
             </p>
 
           

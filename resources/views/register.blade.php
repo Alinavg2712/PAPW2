@@ -77,28 +77,32 @@
                             </div>
                         </div>
                     </div>
-                    <label class="cols-sm-2 control-label" >Profile Picture </label>
-                    <div class="input-group form-group" data-validate="Name is required">
-                    <div class="cols-sm-10">    
-                    <div class="input-group-prepend">           
-
-                         <input type="file"  name="profile" id="img" required style="display:none;"/>
-                        <label class="cols-sm-2 control-label" for="img">Click me to upload image</label>
+                  
+                     <label class="cols-sm-2 control-label" >Profile Picture </label>
+                     <div class="cols-sm-10">    
+                          <div class="input-group form-group" data-validate="Name is required">
+                     <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-users fa" ></i></span>    
+                             <input type="file"   name="profile" id="img"  required class="form-control" />
+                                                    
                          </div>
-                    </div>
-                     </div>
-
+                         <span class="focus-input100"></span>
+                         </div>
+                      </div>
                    
                      <label class="cols-sm-2 control-label">Picture </label>
+                     <div class="cols-sm-10">   
                      <div class="input-group form-group" data-validate="Name is required">
                      <div class="cols-sm-10">   
-                     <div class="input-group-prepend">        
-                          <input type="file"  name="picture" id="picture" required style="display:none;" />
-                           <label class="cols-sm-2 control-label" for="picture">Click me to upload image</label>
+                     <div class="input-group-prepend">    
+                          <span class="input-group-text"><i class="fa fa-users fa" ></i></span>        
+                          <input type="file"  name="picture" id="picture" required  class="form-control"/>
+                          
                     </div>
+                    <span class="focus-input100"></span>
                     </div>
                       </div>
-
+                    </div>
 
                     <div class="input-group form-group">
                         <label for="password" class="cols-sm-2 control-label">Password</label>

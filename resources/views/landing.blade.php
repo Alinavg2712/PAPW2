@@ -62,14 +62,15 @@
                      <ul>
                         <li><a href="/login" >Sign in</a></li>
                         <li><a href="/register" >Sign up</a></li>
+                        <li><a href="/home" >Home page</a></li>
                       
                        
                      </ul>
                   </nav>
                </div>
                <div class="hedder-logo">
-                  <h1><a href="index.html">   
-                     <img src="{{ URL::asset('images/emoji2-01.png')}}" class="img-fluid" alt="Responsive image">Bmbzld</a>
+                  <h1><a href="#">   
+                    Bmbzld</a>
                   </h1>
                </div>
                <!-- /open/close -->

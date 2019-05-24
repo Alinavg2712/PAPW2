@@ -35,52 +35,61 @@
     </div>
 
     <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        @auth
-        <li class="menu-active"><a href="/home">Home</a></li>
-        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-       
-        <li><a href="/search">Search</a></li>
-        @if(Auth::user()->roles->first()->pivot->role_id == 1)
-              <li><a href="/add">Add</a></li>
+            <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
+              @auth
              
-        @endif
-        
-        
-      
-                <li class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                      <a  class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                          <strong>{{Auth::user()->name}}</strong>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li class="divider"></li>
-                          <li>
-                              <div class="navbar-login navbar-login-session">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                          <p>
-                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                          @endauth
-                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                      
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                  </li>
-              </li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+             
+              @if(Auth::user()->roles->first()->pivot->role_id == 1)
+                    <li><a href="/add">Add</a></li>
+                   
+              @endif
+              
+              
             
-      </ul>
-    </nav><!-- #nav-menu-container -->
-  </div>
-
-</header><!-- #header -->
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
+      </header><!-- #header -->
 
 <!--==========================
 Hero Section
@@ -109,7 +118,7 @@ Get Started Section
                   </div>
                                    <input type="radio" name="gender" value="1"> User
                                   <input type="radio" name="gender" value="2"> Comic
-                                  <input type="radio" name="gender" value="3"> Category 
+                                 
     </form>
          <!--==========================
     About Us Section
@@ -144,10 +153,17 @@ Get Started Section
                                 
                                       @foreach($details as $cmc)
                                               <dl>
-                                                  <dt><img src="../img/{{$cmc->pic1}}" alt="Product image" width="68" height="93" /> <a href="/article/{{$cmc->id}}" class="btn float-right login_btn" > <td>{{$cmc->nombre}}</td></a></dt>   
+                                                  <dt><img src="../img/{{$cmc->pic1}}" alt="Product image" width="68" height="93" /> <a href="/article/{{$cmc->id}}"  > <td>{{$cmc->nombre}}</td></a></dt>   
                                               </dl>
                                     
                                       @endforeach
+                                  @endif
+                              @elseif($ch == 0)
+                                @if(empty($fu))
+                                              <dl>
+                                                  <dt><td>Please select a category.</td></dt>   
+                                              </dl>
+                                 
                                   @endif
                             @endif
                            

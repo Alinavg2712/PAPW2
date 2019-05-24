@@ -30,7 +30,7 @@ class ComicTableSeeder extends Seeder
         $comic = new Comic();
         $comic->nombre = 'Turf Wars';
         $comic->description = 'Graphic novel trilogy set in the Avatar universe';
-        $comic->likes = 10;
+        $comic->likes = 15;
         $comic->publicado = true;
         $comic->pic1 = '../images/56.jpg';
         $comic->pic2 = '../images/65.jpg';
@@ -44,8 +44,8 @@ class ComicTableSeeder extends Seeder
         $comic = new Comic();
         $comic->nombre = 'X-23: Target X';
         $comic->description = 'X-23 struggles to create a real life for herself.';
-        $comic->likes = 10;
-        $comic->publicado = true;
+        $comic->likes = 20;
+        $comic->publicado = false;
         $comic->pic1 = '../images/57.jpg';
         $comic->pic2 = '../images/58.jpg';
         $comic->pic3 = '../images/59.jpg';

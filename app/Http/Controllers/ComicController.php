@@ -123,15 +123,24 @@ class ComicController extends Controller
         //
       
 
-        $lecomic=Comic::where('id',$id)->firstOrFail();
-        $lescomments=Comentario::where('comic_id',$id);
+        $lecomic=Comic::where('id',$id)->first();
+        $lescomments=Comentario::where('comic_id',$id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+        if(Auth::check()){ 
         $likey=Likes::where('comic_id',$id)
                     ->where('user_id', Auth::User()->id)->count();
+        }
+        else
+        {
+            $likey=Likes::where('comic_id',$id)
+            ->get();
+        }
        // $lerole=Auth::User()->roles->first()
                        
       
                       
-       
+     
         return view('article',['th'=>$lecomic,'ch'=>$lescomments,'gh'=>$likey]);
       
     }
@@ -145,7 +154,7 @@ class ComicController extends Controller
         $lescat=Categoria::select('id','nombre')
        // $lerole=Auth::User()->roles->first()
                         ->get(); 
-        return view('edit',['th'=>$lecomic],['ch'=>$lescat],['gh'=>$lescat]);
+        return view('edit',['th'=>$lecomic,'ch'=>$lescat,'gh'=>$lescat]);
     }
     public function showCom($id)//id del usuario
     {
@@ -249,6 +258,13 @@ class ComicController extends Controller
                                 $lecomic->video = $medianame5;
                                 $lecomic->user_id=$request->mainId;
                                 $lecomic->cat_id=$request->category;
+                                if(isset($request->checkie))
+                                {
+                                    $lecomic->publicado=1;
+                                }
+                                else{
+                                    $lecomic->publicado=0;
+                                }
                                 $lecomic->update();
                                 return redirect('/article/'.$request->cmcId);
                             }
@@ -330,9 +346,11 @@ class ComicController extends Controller
              
                         $lescomics=Comic::where('publicado',true)
                         ->get();  
+                        $topp=Comic::where('publicado',true)
+                                     ->orderBy('likes', 'desc')->first();
 
-                     
-                            return view('/home',['th'=>$lescomics]);
+                          
+                            return view('/home',['th'=>$lescomics,'tp'=>$topp]);
               }
     /**
      * Show the form for editing the specified resource.

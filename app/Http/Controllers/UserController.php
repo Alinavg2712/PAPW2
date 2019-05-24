@@ -9,6 +9,7 @@ use App\User;
 use App\Role;
 use App\ComicList;
 use App\amigo;
+use App\Comic;
 class UserController extends Controller
 {
     /**
@@ -112,15 +113,19 @@ class UserController extends Controller
                      
         $todo=amigo::where('accept','=',1)
                     ->get();
-                    
-                   
-       
-             
-         
-      
-                            
-    
-        return view('profile',['th'=>$usuario,'qh'=>$todo]);
+                               
+        $lesrecs=ComicList::select('id','comic_id','user_id')
+                     ->inRandomOrder()
+                    ->take(3)
+                    ->get();
+
+        $lespublic=Comic::where('publicado',true)
+                    ->get();
+        $notpublic=Comic::where('publicado',false)
+                    ->get();
+
+              
+        return view('profile',['th'=>$usuario,'qh'=>$todo, 'ph'=>$lesrecs,'pb'=>$lespublic,'npb'=>$notpublic]);
      
     }
     /**

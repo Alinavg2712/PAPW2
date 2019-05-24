@@ -36,54 +36,62 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
     </div>
-
     <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        @auth
-        <li class="menu-active"><a href="/home">Home</a></li>
-        <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
-        <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
-       
-        <li><a href="/search">Search</a></li>
-        @if(Auth::user()->roles->first()->pivot->role_id == 1)
-              <li><a href="/add">Add</a></li>
+            <ul class="nav-menu">
+            <li class="menu-active"><a href="/home">Home</a></li>
+             <li><a href="/search">Search</a></li>
+              @auth
              
-        @endif
-        
-        
-      
-                <li class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                      <a  class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
-                          <strong>{{Auth::user()->name}}</strong>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li class="divider"></li>
-                          <li>
-                              <div class="navbar-login navbar-login-session">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                          <p>
-                                          <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
-                                          @endauth
-                                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
-                                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
-                                      
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                  </li>
-              </li>
+              <li><a href="/friends/{{Auth::user()->id}}">My Friends</a></li>
+              <li><a href="/comics/{{Auth::user()->id}}">My List</a></li>
+             
+              @if(Auth::user()->roles->first()->pivot->role_id == 1)
+                    <li><a href="/add">Add</a></li>
+                   
+              @endif
+              
+              
             
-      </ul>
-    </nav><!-- #nav-menu-container -->
-  </div>
-
-</header><!-- #header -->
+                      <li class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="/img/{{Auth::user()->pic1}}" class="user-image" alt="User Image" >
+                                   
+                                <strong>{{Auth::user()->name}}</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p>
+                                                <a href="/profile/{{Auth::user()->id}}" class="btn btn-info btn-block">My Profile</a>
+                                                <a href="/login" class="btn btn-danger btn-block">Sign out</a>
+                                                
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                          </nav><!-- #nav-menu-container -->
+                          
+                          @else
+                       
+                         
+                            <p>
+                          <a href="/login" class="btn btn-danger btn-block">Sign in</a>
+                          <a href="/register" class="btn btn-danger btn-block">Sign up</a>
+                         
+                          </div>
+                          @endauth
+      </header><!-- #header -->
 
 <!--==========================
 Hero Section
@@ -122,7 +130,13 @@ Hero Section
                                             <label class="label-input100" for="name">Title</label>
                                             <input id="name" class="input100" type="text" name="name" value="{{$th->nombre}}">
                                             <span class="focus-input100"></span>
-                                        </div> 
+                                          </div> 
+                                          <label class="label-input100" for="name">Status</label>
+                                          <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                            <input type="checkbox" class="form-check-input" name="checkie" id="checkie" value="checkie" > Published
+                                           
+                                            <span class="focus-input100"></span>
+                                          </div> 
                                         <div class="wrap-input100 validate-input" data-validate = "Message is required">
                                                 <label class="label-input100" for="message">Description</label>
                                              <textarea id="message" class="input100" name="description" value="{{$th->description}}">{{$th->description}}</textarea>
